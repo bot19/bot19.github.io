@@ -8,11 +8,11 @@
 2. setup hexo + learn hexo
 3. setup custom theme
 4. SCSS working with burma framework
+5. hot reload on hexo server with browsersync
+6. setup git repo (+ignores)
 
 
 
-* setup git repo (+ignores)
-* hot reload on hexo server with browsersync
 * setup CSS
 * setup JS
 * hookup root files like favicon, etc.
