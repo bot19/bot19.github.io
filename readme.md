@@ -12,7 +12,7 @@
 6. setup git repo (+ignores)
 
 
-
+* setup: deploy to master, code commit to dev (branch)
 * setup CSS
 * setup JS
 * hookup root files like favicon, etc.

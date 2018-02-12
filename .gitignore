@@ -12,4 +12,8 @@ Thumbs.db
 db.json
 .deploy*/
 
+# Development only
+public/
+.deploy_git/
+
 
