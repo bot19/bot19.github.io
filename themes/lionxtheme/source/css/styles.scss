@@ -1,0 +1,42 @@
+/*!
+MAIN CSS
+- imports all bulma SASS + custom SCSS
+*/
+
+// dependencies
+@import "framework/utilities/all";
+@import "framework/base/all";
+// @import "framework/layout/section";
+// @import "framework/grid/columns";
+// @import "framework/elements/container";
+// @import "framework/elements/button";
+// @import "framework/elements/form";
+// @import "framework/elements/icon";
+// @import "framework/components/modal";
+
+// plugins
+// @import "plugins/odometer-theme-default";
+
+// base CSS
+// @import "mixins";
+// @import "fonts";
+// @import "base";
+
+// custom CSS
+// @import "header";
+// @import "footer";
+// @import "components";
+// @import "modules";
+// @import "blog";
+// @import "modalform";
+// @import "custom";
+
+// overrides
+// @import "trumps";
+
+// dev (remove pre-production)
+//@import "devtools";
+
+body {
+  background: yellow;
+}

@@ -1,0 +1,19 @@
+/*!
+BASE CSS
+- for any custom site-wide standards
+*/
+
+h1, h2, h3, h4, h5, p {
+	margin: 0 0 1rem;
+
+	&:last-child { margin: 0; }
+}
+
+.b-link {
+	color: $text;
+			
+	&:hover { 
+		text-decoration: none;
+		color: lighten($text, 15%);
+	}
+}

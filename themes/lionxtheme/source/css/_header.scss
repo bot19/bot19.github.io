@@ -1,0 +1,280 @@
+/*!
+HEADER styling
+- logo + navigation
+*/
+
+.header {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	@include animate(default);
+
+	&__container {
+		margin-bottom: -0.75em;
+		margin-top: -0.75em;
+		// padding-top: 0.75em;
+		// padding-bottom: 0.75em;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		height: 70px;
+	}
+
+	&__logo {
+		width: 50%;
+		height: 100%; // for iOS 10 browsers 
+	}
+
+	&__nav {
+		width: 80%;
+		height: 100%; // for iOS 10 browsers 
+		// margin-top: -0.75em;
+		// margin-bottom: -0.75em;
+	}
+
+	&__mob-nav {
+		width: 50%;
+		height: 100%; // for iOS 10 browsers 
+		position: relative;
+		z-index: 100;
+
+		i {
+			color: white;
+			font-size: 3rem;
+			cursor: pointer;
+			@include animate(default);
+
+			&.fa-times {
+				color: $brand-grey;
+			}
+		}
+	}
+
+	&__mob-menu {
+		position: fixed;
+		z-index: 5;
+		width: 100%;
+		height: 100vh;
+		top: 0;
+		left: -100%;
+		padding: 1.5rem;
+		background: white;
+		font-size: 1.5rem;
+		line-height: 2;
+		overflow: auto;
+		@include animate(default);
+
+		&.fn-menu-active {
+			left: 0;
+		}
+
+		ul {
+			margin-top: 5rem;
+
+			a {
+				color: $brand-grey;
+				
+				&.active {
+					color: $primary;
+					font-weight: 800;
+				}
+			}			
+		}
+
+		.submenu__mob { padding-left: 1rem; }
+	}
+
+	@include breakpoint($tablet) { &__logo { width: 20%; } }
+	@include breakpoint($desktop) {  }
+	@include breakpoint($widescreen) { &__container { height: 80px; } }
+	@include breakpoint($fullhd) { &__container { height: 100px; } }
+}
+
+.logo {
+	max-width: 200px;
+}
+
+.nav {
+	height: 100%; 
+
+	a { @include animate(default); }
+
+	> li {
+		display: block;
+		margin-left: 1.5rem;
+		height: 100%;
+
+		> a {
+			position: relative;
+			font-size: 1rem;
+			height: 100%;
+			color: rgba(255, 255, 255, 0.75);
+			// vertically center child span (block)
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+	
+			&.active,
+			&:hover { 
+				color: rgba(255, 255, 255, 1);
+			}
+
+			&.active {
+				font-weight: 800;
+			
+				&::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 5px;
+					width: 100%;
+					background: white;
+					@include animate(default);
+				}
+			}
+		}
+	}
+
+	&__dropdown {
+		position: relative;
+	
+		&:hover {
+			.submenu { display: block; }
+		}
+	}
+
+	@include breakpoint($desktop) {
+		> li {
+			margin-left: 2.5rem;
+
+			> a {
+				font-size: 1.3rem;
+			}
+		}
+	}
+}
+
+.submenu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	background: rgba(56, 56, 56, 0.95);
+	border-radius: 5px;
+	padding: 1rem 0;
+	width: 420px;
+	//margin-top: 1px;
+
+	&--simple { width: 280px; }
+
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		background-color: transparent;
+		top: -10px;
+		left: 50%;
+		transform: translate(-50%, 0);
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 10px solid rgba(56, 56, 56, 0.95);
+	}
+
+	h4 { 
+		margin-bottom: 0;
+		font-weight: 800;
+		color: $primary;
+	}
+
+	a {
+		padding: 1rem;
+		display: block;
+		color: white;
+
+		&.active,
+		&:hover {
+			background: darken($brand-grey, 5%);
+		}
+
+		p { font-size: 0.7rem; }
+	}
+
+	&__primary-wrap {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+	}
+
+	&__primary {
+		width: 50%;
+
+		h4 { font-size: 1.3rem; }
+	}
+
+	&__secondary {
+		a {
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;	
+		}
+
+		&:last-child {
+			a { margin-bottom: 0; }
+		}
+	}
+
+	@include breakpoint($desktop) {
+		width: 560px;
+
+		&--simple { width: 360px; }
+
+		a {
+			p { font-size: 0.8rem; }
+		}
+
+		&__primary {
+			h4 { font-size: 1.5rem; }
+		}
+	}
+
+	@include breakpoint($fullhd) {
+		width: 700px;
+
+		&--simple { width: 480px; }
+	}
+
+}
+
+// header scrolled state, same styling for dark header mode
+.header--dark,
+header.fn-headerscroll {
+	background: rgba(#fff, 0.95);
+
+	.header__container { border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+	.nav > li {
+		> a {
+			color: rgba($brand-grey, 0.75);
+	
+			&.active,
+			&:hover { 
+				color: rgba($brand-grey, 1);
+			}
+
+			&.active {
+				&::before {
+					background: linear-gradient(to right, $primary, $brand-lime);
+				}
+			}
+		}
+	}
+
+	.header__mob-nav {
+		i {
+			color: $brand-grey;
+		}
+	}
+}

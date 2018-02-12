@@ -1,0 +1,299 @@
+/*!
+FILE CSS
+- description
+
+	@include breakpoint($mobplus) {}
+	@include breakpoint($tablet) {}
+	@include breakpoint($desktop) {}
+	@include breakpoint($widescreen) {}
+	@include breakpoint($fullhd) {}
+*/
+
+// button
+.c-btn {
+	position: relative;
+	display: block;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+	padding: 1rem 0;
+	width: 12rem;
+	@include animate(default);
+
+	&:hover { color: white; }
+
+	&--solid {
+		background: $primary;
+		box-shadow: 0 5px darken($primary, 10%);
+
+		&:hover { background: darken($primary, 5%); }
+	
+		&:active {
+			transition: none;
+			top: 5px;
+			box-shadow: none;
+		}
+	}
+
+	&--clear {
+		border: 3px solid white;
+
+		&:hover,
+		&:active {
+			color: $brand-grey;
+			background: white;
+		}
+	}
+
+	@include breakpoint($desktop) {
+		width: 15rem;
+	}
+}
+
+// click-to-play button in hero modules
+.c-video-btn {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 30%;
+	transform: translate(0, -30%);
+
+	img { @include animate(default); }
+
+	&:hover { 
+		img { transform: scale(1.1); }
+	}
+
+	@include breakpoint($tablet) {
+		transform: translate(0, -40%);
+	}
+}
+
+// add small gradient underline to headings
+.c-heading-section {
+	padding-bottom: 5rem;
+
+	&.sml {
+		@include breakpoint($tablet) { padding-bottom: 3rem; }
+	}
+
+	&::after {
+		content: '';
+		display: block;
+		height: 5px;
+		width: 10rem;
+		position: relative;
+		bottom: -1.5rem;
+		margin: 0 auto;
+		background: linear-gradient(to right, $primary, $brand-lime);
+	}
+
+	&--white {
+		&::after { background: white; }
+	}
+}
+
+// green bg for modules under hero
+.c-greenbg {
+	&__top { // need: .t-relative
+		z-index: 2;
+
+		&::before,
+		&::after {
+			content: '';
+			bottom: 0;
+			width: 50%;
+			position: absolute;
+			border-bottom: 30px solid $primary;
+		}
+
+		&::before {
+			left: 0;
+			border-right: 30px solid transparent;
+		}
+
+		&::after {
+			left: 50%;
+			border-left: 30px solid transparent;
+		}
+
+		&--white {
+			&::before,
+			&::after { border-bottom: 30px solid white; }
+		}
+
+		&--greylight {
+			&::before,
+			&::after { border-bottom: 30px solid $white-ter; }
+		}
+	}
+
+	&__bottom {  // need: .t-relative
+		background: linear-gradient(to bottom, $primary 50%, $brand-lime);
+
+		.container { z-index: 3; }
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: -30px;
+			left: 0;
+			width: 100%;
+			height: 465px;
+			display: block;
+			background: center top no-repeat url('../images/svg/bg-stats-2406x560.svg');
+			background-size: 200% auto;
+			z-index: 2;
+		}
+
+		@include breakpoint($tablet) {
+			&::before { background-size: 2000px 465px; }
+		}
+	}
+}
+
+// window frame for images
+.c-window { // needs: .t-relative
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 8px;
+		left: -8px;
+		//z-index: -1;
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.05));
+	}
+
+	&__topbar { // needs: .t-relative
+		height: 30px;
+		background: linear-gradient(to bottom, white, hsl(0, 0%, 94%));
+		border: 1px solid $grey-lighter;
+		border-radius: 3px 3px 0 0;
+	}
+
+	&__dots { // needs: .is-block .t-absolute
+		width: 60px;
+		left: 15px;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+
+	&__img { // needs: .t-relative (for z-index)
+		margin-top: -1px;
+		border: 1px solid $grey-lighter;
+	}
+}
+
+// speech "bubble"
+.c-speech {
+	padding: 6rem 1rem 2rem;
+	background: $grey;
+	border-radius: 0.5rem;
+	margin-bottom: 3rem;
+	position: relative;
+
+	&__quote {
+		font-size: 4rem !important;
+		position: absolute;
+		top: 3.5rem;
+		left: 2rem;
+	}
+
+	p:first-of-type { text-indent: 5rem; }
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		bottom: -1rem;
+		transform: translate(-50%, 0);
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 1rem 1rem 0 1rem;
+		border-color: $grey transparent transparent transparent;
+	}
+}
+
+// 16:9 ratio video embed
+.c-vidratio-169 { // needs: .t-relative
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+
+	iframe { // needs: .t-absolute .t-width-100p .t-height-100p
+		top: 0;
+		left: 0;
+	}
+}
+
+// background graphics: double leaf, top + bottom
+.c-bg-doubleleaf { // needs: .t-relative
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+	}
+
+	&::before {
+		background: left top no-repeat url('../images/svg/bg-daytoday-top.svg');
+		background-size: 46% auto;
+	}
+
+	&::after {
+		background: right bottom no-repeat url('../images/svg/bg-daytoday-bot.svg');
+		background-size: 46% auto;
+	}
+
+	// for modules split into 2 sections
+	&--top { &::after { display: none; } }
+	&--bottom { &::before { display: none; } }
+}
+
+// standardize font-awesome (faw) icons
+.c-faw-icon {
+	font-size: 7rem;
+
+	@include breakpoint($tablet) { font-size: 5rem; }
+	@include breakpoint($widescreen) { font-size: 7rem; }
+}
+
+// background graphics: grey gradient, for white bg, top-right-side, diagonal
+// used: logos module, testimonial slider
+.c-bg-1 {
+	background: left top no-repeat url('../images/svg/bg-gradient-1.svg');
+	background-size: 105% auto;
+}
+
+// background graphics: grey gradient, for white bg, top-side
+// used: social wall
+.c-bg-2 {
+	background: left top no-repeat url('../images/svg/bg-socialwall.svg');
+	background-size: 103% auto;
+}
+
+// background graphics: grey gradient, for light grey bg, bottom-side
+// used: auto build subs/db (websites)
+.c-bg-3 {
+	background: $white-ter center bottom no-repeat url('../images/svg/bg-auto-build-subscribers.svg');
+	background-size: 105% auto;
+}
+
+// background graphics: grey gradient, for white bg, top-side
+// used: crm integration (websites)
+.c-bg-4 {
+	background: center top no-repeat url('../images/svg/bg-seamless-crm-integration.svg');
+	background-size: 110% auto;
+}
+
+// background graphics: light grey gradient, for white bg, bottom-side
+// used: hero video module
+.c-bg-5 {
+	background: white left bottom no-repeat url('../images/svg/bg-suphero.svg');
+	background-size: 105% auto;
+}

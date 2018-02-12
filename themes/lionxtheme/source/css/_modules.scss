@@ -1,0 +1,1030 @@
+/*!
+MODULES styling
+- contains modules large & small (m-*)
+
+	@include breakpoint($mobplus) {}
+	@include breakpoint($tablet) {}
+	@include breakpoint($desktop) {}
+	@include breakpoint($widescreen) {}
+	@include breakpoint($fullhd) {}
+*/
+
+/*! REUSABLE MODULES
+-------------------------------------------------------- */
+// hero module (generic, default on every page)
+.m-hero {
+	background: linear-gradient(to right bottom, $primary 50%, $brand-lime);
+
+	.container { z-index: 2; }
+
+	&__heading {
+		padding-top: 7rem;
+	
+		&.sml {
+			@include breakpoint($tablet) { padding-top: 5rem; }
+		}	
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	// svg pattern / gradient bg (if need)
+	&::before {}
+	&::after {}
+
+	@include breakpoint($fullhd) { &__heading { padding-top: 5rem; } }
+}
+
+// super hero module (probably on key pages)
+.m-suphero {
+	&__main {
+		h1 { margin-top: 1rem; }
+	}
+
+	&__window {
+		width: 100%;
+		margin-top: 1rem;
+	}
+
+	@include breakpoint($tablet) {
+		&__window { width: 90%; }
+	}
+
+	@include breakpoint($widescreen) {
+		&__window { width: 80%; }
+	}
+}
+
+// slider testimonial 
+.m-slider-test {
+	padding-top: 6rem;
+	padding-bottom: 3rem;
+
+	&__slide {
+		padding: 0 2rem;
+		outline: none;
+	}
+
+	.slick-dots li button:before {
+		font-size: 2rem;
+	}
+
+	&__thumb {
+		border-radius: 100%;
+		width: 115px;
+		height: auto;
+		margin: 0 auto 0.5rem;
+	}
+
+	.slick-prev {
+		background: left top no-repeat url('../images/svg/icon-slider-test-arrow-left.svg');
+		left: 11%;
+	}
+	
+	.slick-next {
+		background: left top no-repeat url('../images/svg/icon-slider-test-arrow-right.svg');
+		right: 11%;
+	}
+
+	.slick-arrow {
+		background-size: 5rem 5rem;
+		width: 5rem;
+		height: 5rem;
+		top: 9rem;
+		z-index: 1;
+		opacity: 0.66;
+		@include animate(default);
+
+		&::before { display: none; }
+
+		&:hover { opacity: 1; }
+	}
+
+	@include breakpoint($tablet) {
+		&__slide {
+			padding: 0;
+			outline: none;
+			opacity: 0.25;
+			@include animate(default);
+			transform: scale(0.8, 0.8);
+			filter: blur(5px);
+	
+			&.slick-current {
+				transform: scale(1, 1);
+				filter: blur(0);
+				opacity: 1;
+			}
+		}
+
+		&__thumb { width: 33%; }
+	}
+
+	@include breakpoint($desktop) {
+		padding-top: 7rem;
+		padding-bottom: 5rem;
+
+		&__slide { padding: 0 1rem; }
+
+		.slick-prev { left: 13%; }
+		
+		.slick-next { right: 13%; }
+	}
+
+	@include breakpoint($widescreen) {
+		&__slide { padding: 0 2rem; }
+	}
+}
+
+// CTA module (crm)
+.m-cta {
+	background: linear-gradient(to bottom, $primary 50%, $brand-lime);
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0; 
+		width: 100%;
+		height: 100%;
+		background: center top no-repeat url('../images/svg/bg-cta.svg');
+		background-size: 120% auto;
+	}
+
+	&__cta { margin: 2rem 0 0; }
+
+}
+
+// slider websites
+.m-slider-gallery {
+	.button:hover { text-decoration: none; }
+
+	&__heading {
+		color: inherit;
+
+		&:hover { color: lighten($grey-dark, 15%); }
+	}
+
+	&__heroimg {
+		max-width: unset;
+		width: 100%;
+		height: auto;
+	}
+
+	&__nav-link {
+		padding: 0 0.5rem 0.5rem 0.5rem;
+		outline: none;
+
+		a { outline: none; }
+	}
+
+	&__img {
+		@include animate(default);
+
+		&:hover { transform: scale(1.1); }
+	}
+
+	.slick-slide {
+		outline: none;
+	}
+
+	.slick-prev {
+		background: left top no-repeat url('../images/svg/icon-slider-test-arrow-left.svg');
+	}
+	
+	.slick-next {
+		background: left top no-repeat url('../images/svg/icon-slider-test-arrow-right.svg');
+	}
+	
+	// only used on fbapp's fbapp features slider
+	.slick-arrow {
+		background-size: 100% auto;
+		width: 3rem;
+		height: 3rem;
+		//top: 9rem;
+		//z-index: 1;
+		opacity: 0.66;
+		@include animate(default);
+
+		&::before { display: none; }
+
+		&:hover { opacity: 1; }
+	}
+
+	.slick-dots li { margin: 0; }
+
+	.slick-dots li button:before {
+		font-size: 2rem;
+	}
+
+	.slider-nav .slick-current {
+		a { cursor: default; }
+		
+		img {
+			opacity: 0.2;
+	
+			&:hover { transform: none; }
+		}
+	}
+
+	.slider-nav { display: none; }
+
+	@include breakpoint($tablet) {
+		.slick-prev { 
+			left: 1rem;
+			z-index: 1;
+		}
+	
+		.slick-next { right: 1rem; }
+		.slider-nav { display: block; }
+
+		.slick-dots li { margin: 0 5px; }
+		
+		// prevent some weird intermittent alignment issues
+		.disable-transform {
+			.slick-track { transform: none !important; }
+		}
+	}
+
+	@include breakpoint($desktop) {
+		.slick-prev { left: 2rem;}
+		.slick-next { right: 2rem; }
+		&__nav-link { padding: 0 1rem 1rem 1rem; }
+	}
+
+	@include breakpoint($widescreen) {
+		.slick-prev { left: 3rem;	}
+		.slick-next { right: 3rem; }
+	}
+}
+
+// content module
+.m-content {
+	h2, h3, h4, h5, h6 { margin-bottom: 2rem; }
+
+	p, ul, ol { 
+		//font-size: 1.1rem;
+		line-height: 2;
+		margin-bottom: 2rem;
+	}
+
+	p:last-child { margin-bottom: 1rem; }
+
+	blockquote {
+		padding: 1rem;
+		border-left: 3px solid $white-ter;
+		font-style: italic;
+		margin-bottom: 2rem;
+
+		p { margin-bottom: 0 !important; }
+	}
+
+	img { margin: 1rem 0; }
+
+	ul, ol {
+		list-style-type: disc;
+		list-style-position: inside;
+	}
+
+	ol { list-style-type: decimal; }
+
+	li { padding-left: 1rem; }
+
+	a:hover {
+		color: $primary;
+		text-decoration: underline;
+	}
+}
+
+.m-modal {
+	&--video {
+		width: 90%;
+		overflow: hidden;
+	}
+
+	&--form {
+		background: white;
+		padding: 2rem;
+	}
+}
+
+
+
+/*! HOME
+-------------------------------------------------------- */
+// hero module alternative (home)
+.m-hero-vbg {
+	overflow: hidden;
+	padding-top: 0;
+	padding-bottom: 0;
+	background-color: $grey-darker;
+
+	&__fbimg {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.4;
+		z-index: 1;
+	}
+
+	&__video {
+		display: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		max-width: none;
+		transform: translate(-50%, -50%);
+		z-index: 0;
+		opacity: 0;
+		@include animate(default);
+	}
+
+	&__wide {
+		width: 100%;
+		height: auto;
+		opacity: 0.4;
+	}
+
+	&__high {
+		height: 100%;
+		width: auto;
+		opacity: 0.4;
+	}
+
+	&__container { 
+		height: 100vh;
+		min-height: 470px;
+	}
+
+	&__content {
+		// quote should only animate away when over video ($tablet+)
+		top: 38%;
+		position: relative;
+		transform: translate(0, -50%);
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		@include animate(0.75s);
+	}
+
+	&__heading { margin-bottom: 1rem; }
+
+	&__bottom {
+		width: 100%;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}
+
+	&__t-content {
+		padding-bottom: 1rem;
+		opacity: 0;
+		visibility: hidden;
+		@include animate(0.75s);
+	}
+
+	&__b-content {
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		padding-bottom: 3rem;
+	}
+
+	&__b-left {
+		padding: 1rem 0;
+	}
+
+	&__b-right {
+		a { margin: 0 auto; }
+	}
+
+	@include breakpoint($tablet) {
+		&__fbimg { display: none; }
+		&__video { display: block; }
+		&__content { top: 45%; }
+
+		&__b-content {
+			display: flex;
+			padding-bottom: 1.5rem;
+		}
+
+		&__b-left {
+			width: 60%;
+			text-align: left;
+			padding: 1rem 0;
+		}
+	
+		&__b-right {
+			width: 40%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			a { margin: 0; }
+		}
+	}
+
+	@include breakpoint($fullhd) {
+		&__b-content {
+			padding-bottom: 1rem;
+		}
+	}
+}
+
+// module: statistic
+.m-home-stats {
+	color: white;
+
+	&__box {
+		padding-bottom: 2rem;
+	}
+
+	&__icon {
+		width: 50%;
+		height: 110px;
+		margin-bottom: 0.5rem;
+	}
+
+	&__num {
+		@extend %fontExo;
+		font-size: 2.5rem;
+		line-height: 1.2;
+	}
+
+	@include breakpoint($tablet) {
+		&__icon {
+			width: 66%;
+			height: 80px;
+		}
+
+		&__desc {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 66px;
+		}
+
+		&__num { font-size: 1.4rem; }
+	}
+
+	@include breakpoint($desktop) {
+		&__icon { width: 50%; }
+		&__num { font-size: 2rem; }
+	}
+
+	@include breakpoint($widescreen) {
+		&__icon { height: 110px; }
+		&__num { font-size: 2.5rem; }
+	}
+
+	@include breakpoint($fullhd) {
+		&__box { padding-bottom: 1rem; }
+		&__icon { margin-bottom: 1rem; }
+
+		&__desc {
+			min-height: 72px;
+			margin-bottom: 0.5rem;
+		}
+	}
+}
+
+// module: product
+.m-product {
+
+	video {
+		box-shadow: 5px 0 30px 0px rgba(0,0,0,0.05);
+	}
+
+	&__crm {
+		background: white center bottom no-repeat url('../images/svg/bg-product-1.svg');
+		background-size: 1000px auto;
+	}
+
+	&__websites {
+		background: white center top no-repeat url('../images/svg/bg-product-2-670x232.svg');
+		background-size: 1000px 346px;
+	}
+	
+	&__sta {
+		background: white center top no-repeat url('../images/svg/bg-product-3-300x104.svg');
+		background-size: 1200px 414px;
+	}
+
+	&__fbapp {
+		position: relative;
+		background: center top no-repeat url('../images/svg/bg-product-4-850x495.svg'); 
+		background-size: 850px 495px;
+
+		&::before {
+			content: '';
+			position: absolute;
+			display: block;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(to bottom, $white-ter, white);
+			z-index: -1;
+		}
+	}
+
+	@include breakpoint($tablet) {
+		video {
+			margin-bottom: 1rem;
+		}
+
+		&__crm { background-size: 1150px auto; }
+		&__websites { background-size: 1700px 589px; }
+		&__sta { background-size: 1800px 621px; }
+		&__fbapp { background-size: 1050px 612px; }
+	}
+
+	@include breakpoint($desktop) {
+		h3 { padding: 1rem 0; }
+
+		&__crm { background-size: 105% auto; }
+		&__websites { background-size: 2000px 693px; }
+		&__sta { background-size: 2400px 828px; }
+		&__fbapp { background-size: 1250px 729px; }
+	}
+
+	@include breakpoint($widescreen) {
+		&__websites { background-size: 2300px 797px; }
+		&__sta { background-size: 2800px 966px; }
+		&__fbapp { background-size: 1500px 874px; }
+	}
+
+	@include breakpoint($fullhd) {
+		&__websites { background-size: 2600px 901px; }
+		&__sta { background-size: 3000px 1035px }
+		&__fbapp { background-size: 1750px 1020px; }
+	}
+}
+
+// module with logo wall (home)
+.m-logos {
+	&__table {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 2rem 0 0;
+	}
+
+	&__logo {
+		width: 33%;
+		margin-bottom: 2rem;
+
+		img {
+			max-width: 66%;
+			max-height: 60px;
+			height: auto;
+			width: auto;
+			display: block;
+			margin: 0 auto;
+			position: relative;
+			top: 50%;
+			transform: translate(0, -50%);
+		}
+	}
+
+	@include breakpoint($tablet) {
+		&__logo {
+			width: 16%;
+	
+			img {
+				max-width: 80%;
+				max-height: 80px;
+			}
+		}
+	}
+
+	@include breakpoint($desktop) {
+		&__logo {
+			img {
+				max-width: 66%;
+				max-height: 100px;
+			}
+		}
+	}
+}
+
+
+
+/*! WHY
+-------------------------------------------------------- */
+// 2-col why eagle modules (why eagle)
+.m-why {
+	&__comp-link {
+		display: inline-block;
+		width: 20%;
+
+		&:hover {
+			.m-why__logo { opacity: 1; }
+		}
+	}
+
+	&__logo {
+		display: block;
+		opacity: 0.75;
+		max-height: 90px;
+		margin: 0 auto;
+	}
+
+	&__agent { margin: 0 0 2rem; }
+
+	&__quote {
+		font-size: 4rem !important; // overwritten by fontawesome styles
+		top: -2rem;
+		left: 0;
+	}
+
+	&__testimonial {
+		p:first-of-type { text-indent: 4.5rem; }
+	}
+
+	&__cta {
+		margin: 2.5rem auto 1rem;
+	}
+
+	@include breakpoint($tablet) {
+		&__cta { margin-bottom: 0; }
+	}
+}
+
+// why eagle wall module (why eagle)
+.m-why-wall {
+	.c-speech { margin-bottom: 0; }
+
+	&__grid {
+		.grid-sizer { width: 100%; }
+		.gutter-sizer { width: 0; }
+	}
+
+	&__block {
+		padding: 0 1rem;
+		margin: 0 0 2rem;
+	}
+
+	&__footer { margin-top: 2rem; }
+
+	&__agent { margin-bottom: 0.5rem; }
+
+	&__comp-link {
+		display: inline-block;
+		width: 33%;
+		max-width: 150px;
+
+		&:hover {
+			.m-why-wall__logo { opacity: 1; }
+		}
+	}
+
+	&__logo {
+		display: block;
+		opacity: 0.75;
+		max-height: 90px;
+		margin: 0 auto;
+	}
+
+	@include breakpoint($tablet) {
+		&__grid {
+			.grid-sizer { width: 48%; }
+			.gutter-sizer { width: 4%; }
+		}
+
+		&__block { padding: 0; }
+	}
+	@include breakpoint($desktop) {
+		&__grid {
+			.grid-sizer { width: 32%; }
+			.gutter-sizer { width: 2%; }
+		}
+	}
+	@include breakpoint($widescreen) {
+		&__block { padding: 0 1rem; }
+	}
+}
+
+
+
+/*! CRM
+-------------------------------------------------------- */
+.m-manlist {
+	&__block {
+		border-top: 1px solid rgba(255, 255, 255, 0.5);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		padding: 1rem;
+		height: 100%;
+	}
+
+	&__img { padding-bottom: 3rem; }
+
+	@include breakpoint($tablet) { padding-bottom: 3rem; }
+}
+
+.m-daytoday {
+	&__top { p { margin-bottom: 4rem; } }
+
+	&__block {
+		padding: 1rem;
+		height: 100%;
+		border-radius: 3px;
+		box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.1);
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
+		background: rgba(255, 255, 255, 0.9);
+
+		p { margin-bottom: 1rem; }
+	}
+
+	&__img { margin-bottom: 1rem; }
+
+	@include breakpoint($tablet) {
+		&__block {
+			margin-left: 0;
+			margin-right: 0;
+
+			p { margin-bottom: 0; }
+		}
+		
+		&__img { margin-bottom: 1rem; }
+	}
+
+	@include breakpoint($desktop) {
+		&__block {
+			margin-left: 0.5rem;
+			margin-right: 0.5rem;
+
+			p { margin-bottom: 1rem; }
+		}
+	}
+
+	@include breakpoint($widescreen) {
+		&__block {
+			p { margin-bottom: 2rem; }
+		}
+
+		&__img { margin-bottom: 2rem; }
+	}
+}
+
+.m-leadimport {
+	background: center top no-repeat url('../images/svg/bg-lead-import.svg');
+	background-size: 105% auto;
+}
+
+.m-smenrich {
+	background: linear-gradient(to bottom, $white-ter, white 80%);
+
+	p { margin-bottom: 1rem; }
+}
+
+.m-workvolume {
+	background: center top no-repeat url('../images/svg/bg-workvolume.svg');
+	background-size: 110% auto;
+
+	p { margin-bottom: 3rem; }
+}
+
+.m-mobapp {
+	background: linear-gradient(to bottom, $white-ter, white 30%);
+
+	p { margin-bottom: 1rem; }
+
+	@include breakpoint($tablet) { p { margin-bottom: 0; } }
+}
+
+.m-emailmarketing {
+	background: $white-ter;
+
+	p { margin-bottom: 2rem; }
+
+	&__img {
+		left: 50%;
+		bottom: 0;
+		transform: translate(-90%, 0);
+		width: 85%;
+		max-width: 800px;
+	}
+
+	@include breakpoint($tablet) {
+		p { margin-bottom: 0; }
+		&__content { height: 350px; }
+	}
+
+	@include breakpoint($desktop) {
+		&__img {
+			width: 75%;
+			max-width: 900px;
+		}
+		&__content { height: 400px; }
+	}
+
+	@include breakpoint($widescreen) {
+		&__img { max-width: 1000px; }
+		&__content { height: 450px; }
+	}
+
+	@include breakpoint($fullhd) {
+		&__img { max-width: 1200px; }
+		&__content { height: 560px; }
+	}
+}
+
+.m-reportinsights {
+	background: center bottom no-repeat url('../images/svg/bg-reporting-insights.svg');
+	background-size: 105% auto;
+
+	&::before {
+		content: '';
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(to bottom, white 50%, $white-ter);
+		z-index: -1;
+	}
+
+	p { margin-bottom: 2rem; }
+
+	&__img {
+		left: 50%;
+		bottom: 0;
+		width: 60%;
+		max-width: 1000px;
+	}
+
+	@include breakpoint($tablet) {
+		p { margin-bottom: 0; }
+		&__content { height: 300px; }
+	}
+
+	@include breakpoint($desktop) { &__content { height: 350px; } }
+	@include breakpoint($widescreen) { &__content { height: 400px; } }
+	@include breakpoint($fullhd) { &__content { height: 450px; } }
+}
+
+.m-integration {
+	&__block {
+		img {
+			width: 50%;
+			max-width: 128px;
+		}
+
+		p { margin-bottom: 2rem; }
+
+		@include breakpoint($widescreen) { img { margin-bottom: 1rem; } }
+	}
+
+}
+
+
+
+/*! WEBSITES
+-------------------------------------------------------- */
+.m-webbase {
+	p { margin-bottom: 2rem; }
+
+	@include breakpoint($tablet) {
+		p { margin-bottom: 0; }
+	}
+}
+
+.m-resdesign {
+	background: linear-gradient(to bottom, $white-ter, white);
+
+	&__img {
+		&--mob { 
+			width: 100%;
+			max-width: 345px;
+		}
+	}
+
+	@include breakpoint($tablet) {
+		&__img {
+			left: 10%;
+			bottom: 0;
+			width: 35%;
+			max-width: 290px;
+		}
+
+		&__content { height: 350px; }
+	}
+
+	@include breakpoint($desktop) {
+		&__img {
+			left: 50%;
+			transform: translate(-145%, 0);
+			width: 308px;
+			max-width: 100%;
+		}
+
+		&__content { height: 400px; }
+	}
+
+	@include breakpoint($widescreen) {
+		&__img {
+			width: 338px;
+			transform: translate(-150%, 0);
+		}
+
+		&__content { height: 450px; }
+	}
+
+	@include breakpoint($fullhd) {
+		&__img { width: 410px; }
+		&__content { height: 560px; }
+	}
+}
+
+.m-googlefriendly {
+	background: $white-ter;
+
+	&__img {
+		&--mob { 
+			width: 100%;
+			max-width: 420px;
+		}
+	}
+
+	@include breakpoint($tablet) {
+		&__img {
+			left: 50%;
+			bottom: 0;
+			width: 45%;
+			max-width: 420px;
+		}
+
+		&__content { height: 350px; }
+	}
+
+	@include breakpoint($desktop) {
+		&__img {
+			width: 460px;
+			max-width: 100%;
+		}
+
+		&__content { height: 400px; }
+	}
+
+	@include breakpoint($widescreen) {
+		&__img { width: 510px; }
+		&__content { height: 450px; }
+	}
+
+	@include breakpoint($fullhd) {
+		&__img { width: 630px; }
+		&__content { height: 560px; }
+	}
+}
+
+
+
+/*! SALES TRUST ACCOUNTING
+-------------------------------------------------------- */
+/*! FB APP
+-------------------------------------------------------- */
+
+
+
+/*! INTEGRATION PARTNERS
+-------------------------------------------------------- */
+.m-integration {
+	display: flex;
+	height: 100%;
+
+	&__img {
+		width: 25%;
+		align-self: center;
+
+		img { max-height: 100px; }
+	}
+
+	&__info {
+		width: 75%;
+		padding: 0 0 0 1rem;
+		align-self: center;
+
+		h3 { margin-bottom: 0; }
+		p { font-size: 0.75rem; }
+	}
+}
+
+
+/*! CONTACT
+-------------------------------------------------------- */
+.m-gmap {
+	iframe {
+		width: 100%;
+		height: 450px;
+		display: block;
+
+		@include breakpoint($fullhd) { height: 560px; }
+	}
+}
