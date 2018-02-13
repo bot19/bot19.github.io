@@ -81,6 +81,60 @@
 					}
 				};
 
+				/** 
+				 * TIMER functionaliy
+				 * using real time difference to generate blog time
+				 * diff: now vs start date (1 May 2017, arrive KR)
+				 * 1 real day is 1 blog year
+				 * 24 real hours is 365 blog days
+				*/
+				var timer = function () {
+					console.log('timer init');
+
+					// init date
+					var initDate = [2017, 5, 1];
+					
+					// diff > years passed
+					var timeDiffMins = moment().diff(moment(initDate), 'minutes');
+					var timeDiffDays = moment().diff(moment(initDate), 'days');
+					var hrToBlogDays = ((timeDiffMins / 60 / 24) - timeDiffDays) * 365;
+					var blogDays = Math.floor(hrToBlogDays);
+					
+					// set blog day (hr) and blog year (day)
+					$('#year').html(timeDiffDays);
+					$('#day').html(blogDays); // round down, decimal used for hours
+					
+					// set blog hour
+					var partBlogDaysToBlogHr = Math.round(hrToBlogDays % 1 * 24);
+					$('#hour').html(partBlogDaysToBlogHr);
+					
+					// timing to increase blog hour
+					var realMinuteToBlogDay = 24 * 60 / 365;
+					var updateBlogHrInterval = realMinuteToBlogDay * 60 / 24;
+					var intervalInSecs = updateBlogHrInterval * 1000;
+
+					// increase blog hour + update year every 24 blog hr (~4m real)
+					setInterval(function () {
+						partBlogDaysToBlogHr += 1;
+						
+						// 24h > updated blog day
+						if (partBlogDaysToBlogHr === 24) {
+							blogDays += 1;
+							$('#day').html(blogDays);
+							partBlogDaysToBlogHr = 0;
+						}
+						
+						$('#hour').html(partBlogDaysToBlogHr);
+						console.log('inside interval');
+					}, intervalInSecs);
+
+					// at day 365, trigger moment.js to update day, year + reset hr to 0
+					
+					
+					//$("#test").html(timeDiff);
+					console.log(hrToBlogDays, hrToBlogDays % 1, hrToBlogDays % 1 * 24, partBlogDaysToBlogHr);
+				};
+
 
 				/*
 					ON LOAD execute
@@ -88,7 +142,7 @@
 				// GLOBAL
 				//desktopNav();
 				//urlAnchor();
-				$('#fn-mobnav').doOnce(mobileNav);
+				$('#fn-time').doOnce(timer);
 
 
 				// PARTICULAR PAGE
