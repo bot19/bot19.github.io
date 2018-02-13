@@ -10,17 +10,21 @@
 4. SCSS working with burma framework
 5. hot reload on hexo server with browsersync
 6. setup git repo (+ignores)
-
-
-* setup: deploy to master, code commit to dev (branch)
-* setup CSS
-* setup JS
-* hookup root files like favicon, etc.
+7. setup: deploy to master, code commit to dev (branch)
+8. fix: theme template update, deploy says no change? (generate > deploy)
+9. fix: burma compile errors (hide folders to avoid compilation)
+10. fix: deploy generating other theme's files? (files from previous theme deployment, not cleaned, moved theme's folder)
+11. update: website details in _config, update post link
+12. hookup root files like favicon, etc.
+13. setup CSS
+14. setup JS
 
 
 
 ## Phase 2: website build
 ### Phase 2 done's
+* pick 2x fonts
+* setup font files
 
 
 

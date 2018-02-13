@@ -1,42 +1,37 @@
 /*!
 MAIN CSS
 - imports all bulma SASS + custom SCSS
+- minify for production to save kb's
 */
 
 // dependencies
-@import "framework/utilities/all";
-@import "framework/base/all";
-// @import "framework/layout/section";
-// @import "framework/grid/columns";
-// @import "framework/elements/container";
-// @import "framework/elements/button";
-// @import "framework/elements/form";
-// @import "framework/elements/icon";
-// @import "framework/components/modal";
+@import "_framework/utilities/all";
+@import "_framework/base/all";
+@import "_framework/layout/section";
+@import "_framework/grid/columns";
+@import "_framework/elements/container";
+// @import "_framework/elements/button";
+// @import "_framework/elements/form";
+// @import "_framework/elements/icon";
+// @import "_framework/components/modal";
 
 // plugins
-// @import "plugins/odometer-theme-default";
+// @import "_plugins/odometer-theme-default";
 
 // base CSS
-// @import "mixins";
-// @import "fonts";
-// @import "base";
+@import "mixins";
+@import "fonts";
+@import "base";
 
 // custom CSS
-// @import "header";
-// @import "footer";
-// @import "components";
-// @import "modules";
-// @import "blog";
-// @import "modalform";
-// @import "custom";
+@import "globals";
+@import "components";
+@import "modules";
+@import "custom";
 
 // overrides
-// @import "trumps";
+@import "trumps";
 
 // dev (remove pre-production)
-//@import "devtools";
+@import "devtools";
 
-body {
-  background: yellow;
-}
