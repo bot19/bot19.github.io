@@ -23,6 +23,13 @@
 
 ## Phase 2: website build
 ### Phase 2 done's
+* home: landing page
+* home: timer
+* home: writing feed
+* home: page transitions
+* home: footer
+* post: layout
+* page: layout
 * pick 2x fonts
 * setup font files
 
