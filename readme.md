@@ -20,11 +20,16 @@
 14. setup JS
 
 
-
 ## Phase 2: website build
 ### Phase 2 done's
+15. home: timer - init build
+
+16. home: timer - finish + clean up
+17. home: timer - add blog seconds counter
+
+* home: timer - clean up
+
 * home: landing page
-* home: timer
 * home: writing feed
 * home: page transitions
 * home: footer
@@ -37,3 +42,4 @@
 
 ## Phase 3: optimisations, enhancements, v2.0
 ### Phase 3 done's
+* home: timer - 100% accurate with reload
