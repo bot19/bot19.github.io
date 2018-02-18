@@ -24,7 +24,10 @@
 		website = {
 			init: function () {	
 				var
-					$header = null;
+					$timerHr = $('#hour'),
+					$timerMin = $('#mins'),
+					$timerDay = $('#day'),
+					$timerYear = $('#year');
 
 				/*
 					UTILITY FUNCTIONS
@@ -82,58 +85,104 @@
 				};
 
 				/** 
-				 * TIMER functionaliy
+				 * SETTIMER functionaliy
 				 * using real time difference to generate blog time
 				 * diff: now vs start date (1 May 2017, arrive KR)
 				 * 1 real day is 1 blog year
 				 * 24 real hours is 365 blog days
 				*/
-				var timer = function () {
-					console.log('timer init');
-
-					// init date
-					var initDate = [2017, 5, 1];
-					
-					// diff > years passed
-					var timeDiffMins = moment().diff(moment(initDate), 'minutes');
-					var timeDiffDays = moment().diff(moment(initDate), 'days');
-					var hrToBlogDays = ((timeDiffMins / 60 / 24) - timeDiffDays) * 365;
-					var blogDays = Math.floor(hrToBlogDays);
+				var setTimer = function () {
+					var
+						initDate = [2017, 5, 1], // init date
+						timeDiffDays = moment().diff(moment(initDate), 'days'),
+						timeDiffMins = moment().diff(moment(initDate), 'minutes'),
+						hrToBlogDays = ((timeDiffMins / 24 / 60) - timeDiffDays) * 365,
+						blogDays = Math.floor(hrToBlogDays),
+						partBlogDaysToBlogHr = null;
 					
 					// set blog day (hr) and blog year (day)
-					$('#year').html(timeDiffDays);
-					$('#day').html(blogDays); // round down, decimal used for hours
+					$timerYear.html(timeDiffDays);
+					$timerDay.html(blogDays); // round down, decimal used for hours
 					
 					// set blog hour
-					var partBlogDaysToBlogHr = Math.round(hrToBlogDays % 1 * 24);
-					$('#hour').html(partBlogDaysToBlogHr);
-					
-					// timing to increase blog hour
-					var realMinuteToBlogDay = 24 * 60 / 365;
-					var updateBlogHrInterval = realMinuteToBlogDay * 60 / 24;
-					var intervalInSecs = updateBlogHrInterval * 1000;
+					partBlogDaysToBlogHr = Math.round(hrToBlogDays % 1 * 24);
+					$timerHr.html(partBlogDaysToBlogHr.toLocaleString(undefined,{minimumIntegerDigits: 2}));
 
+					console.log('setTimer:', hrToBlogDays, hrToBlogDays % 1, hrToBlogDays % 1 * 24, partBlogDaysToBlogHr);
+
+					// start the timer
+					startTimer(partBlogDaysToBlogHr, blogDays);
+				};
+
+				/** 
+				 * SECTIMER functionaliy
+				 * ticks up blog minutes
+				*/
+				var secTimer = function (updateBlogMinInterval) {
+					var
+						blogMins = 0,
+						increaesBlogMins = function () {
+							blogMins += 1;
+							
+							if (blogMins > 59) {
+								console.log('increaesBlogMins interval cleared');
+								clearInterval(blogMinInterval);
+							}
+							
+							$timerMin.html(blogMins.toLocaleString(undefined,{minimumIntegerDigits: 2}));
+						},
+						blogMinInterval = setInterval(increaesBlogMins, updateBlogMinInterval);
+				};
+
+				/** 
+				 * STARTTIMER functionaliy
+				 * ticks up blog hours + check blog days / year
+				 * inactive tab causes setIntervals to go wonky
+				 * upon active tab, eventually setIntervals will correct
+				*/
+				var startTimer = function (partBlogDaysToBlogHr, blogDays) {
+					// timing to increase blog hour
+					// real mins/day by 365 blog days: 24 * 60 / 365 (min/blog day)
+					// above * 60 (sec) / 24 (h) = blog hr update every real sec (rate)
+					// below calculation is simplified. Removed 24/24.
+					var
+						realMinuteToBlogDay = 60 / 365 * 60,
+						updateBlogHrInterval = realMinuteToBlogDay * 1000,
+						updateBlogMinInterval = updateBlogHrInterval / 60,
+						blogHrInterval = null;
+
+					// blog minutes counter first start
+					secTimer(updateBlogMinInterval);
+					
 					// increase blog hour + update year every 24 blog hr (~4m real)
-					setInterval(function () {
+					blogHrInterval = setInterval(function () {
 						partBlogDaysToBlogHr += 1;
 						
+						// reset blog mins counter + start again
+						secTimer(updateBlogMinInterval);
+
 						// 24h > updated blog day
-						if (partBlogDaysToBlogHr === 24) {
-							blogDays += 1;
-							$('#day').html(blogDays);
+						if (partBlogDaysToBlogHr > 23) {
+							$timerDay.html(blogDays += 1);
 							partBlogDaysToBlogHr = 0;
 						}
-						
-						$('#hour').html(partBlogDaysToBlogHr);
-						console.log('inside interval');
-					}, intervalInSecs);
 
-					// at day 365, trigger moment.js to update day, year + reset hr to 0
-					
-					
-					//$("#test").html(timeDiff);
-					console.log(hrToBlogDays, hrToBlogDays % 1, hrToBlogDays % 1 * 24, partBlogDaysToBlogHr);
+						// at day 365, trigger moment.js to update day, year + reset hr to 0
+						if (blogDays > 364) {
+							// kill previous hr+ interval
+							clearInterval(blogHrInterval);
+							// set the timer + start it again
+							return setTimer();
+						}
+						
+						// all good? Set the blog hour
+						$timerHr.html(partBlogDaysToBlogHr.toLocaleString(undefined,{minimumIntegerDigits: 2}));
+						//console.log('inside interval');
+					}, updateBlogHrInterval);
+
+					//console.log('startTimer');
 				};
+
 
 
 				/*
@@ -142,7 +191,7 @@
 				// GLOBAL
 				//desktopNav();
 				//urlAnchor();
-				$('#fn-time').doOnce(timer);
+				setTimer();
 
 
 				// PARTICULAR PAGE
