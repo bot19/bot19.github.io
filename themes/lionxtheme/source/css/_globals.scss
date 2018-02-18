@@ -3,3 +3,27 @@ GLOBALS styling
 - header, navigation, footer, etc.
 */
 
+.header {
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 10;
+
+	&__container {
+		display: flex;
+		align-items: center;
+	}
+
+	&__logo {
+		@extend %fontNunito700;
+		font-size: 3rem;
+		line-height: 1;
+	}
+
+	&__timer {
+		margin-left: auto;
+		padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.5);
+	}
+}
+

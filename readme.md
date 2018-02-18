@@ -23,11 +23,12 @@
 ## Phase 2: website build
 ### Phase 2 done's
 15. home: timer - init build
-
 16. home: timer - finish + clean up
 17. home: timer - add blog seconds counter
 
-* home: timer - clean up
+18. home: timer - clean up
+19. header + fonts progress
+
 
 * home: landing page
 * home: writing feed

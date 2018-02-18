@@ -24,7 +24,10 @@
 		website = {
 			init: function () {	
 				var
-					$header = null;
+					$timerHr = $('#hour'),
+					$timerMin = $('#mins'),
+					$timerDay = $('#day'),
+					$timerYear = $('#year');
 
 				/*
 					UTILITY FUNCTIONS
@@ -89,22 +92,21 @@
 				 * 24 real hours is 365 blog days
 				*/
 				var setTimer = function () {
-					// init date
-					var initDate = [2017, 5, 1];
-					
-					// diff > years passed
-					var timeDiffDays = moment().diff(moment(initDate), 'days');
-					var timeDiffMins = moment().diff(moment(initDate), 'minutes');
-					var hrToBlogDays = ((timeDiffMins / 24 / 60) - timeDiffDays) * 365;
-					var blogDays = Math.floor(hrToBlogDays);
+					var
+						initDate = [2017, 5, 1], // init date
+						timeDiffDays = moment().diff(moment(initDate), 'days'),
+						timeDiffMins = moment().diff(moment(initDate), 'minutes'),
+						hrToBlogDays = ((timeDiffMins / 24 / 60) - timeDiffDays) * 365,
+						blogDays = Math.floor(hrToBlogDays),
+						partBlogDaysToBlogHr = null;
 					
 					// set blog day (hr) and blog year (day)
-					$('#year').html(timeDiffDays);
-					$('#day').html(blogDays); // round down, decimal used for hours
+					$timerYear.html(timeDiffDays);
+					$timerDay.html(blogDays); // round down, decimal used for hours
 					
 					// set blog hour
-					var partBlogDaysToBlogHr = Math.round(hrToBlogDays % 1 * 24);
-					$('#hour').html(partBlogDaysToBlogHr.toLocaleString(undefined,{minimumIntegerDigits: 2}));
+					partBlogDaysToBlogHr = Math.round(hrToBlogDays % 1 * 24);
+					$timerHr.html(partBlogDaysToBlogHr.toLocaleString(undefined,{minimumIntegerDigits: 2}));
 
 					console.log('setTimer:', hrToBlogDays, hrToBlogDays % 1, hrToBlogDays % 1 * 24, partBlogDaysToBlogHr);
 
@@ -117,18 +119,19 @@
 				 * ticks up blog minutes
 				*/
 				var secTimer = function (updateBlogMinInterval) {
-					var blogMins = 0;
-					var increaesBlogMins = function () {
-						blogMins += 1;
-						
-						if (blogMins > 59) {
-							console.log('increaesBlogMins interval cleared');
-							clearInterval(blogMinInterval);
-						}
-						
-						$('#mins').html(blogMins.toLocaleString(undefined,{minimumIntegerDigits: 2}));
-					};
-					var blogMinInterval = setInterval(increaesBlogMins, updateBlogMinInterval);
+					var
+						blogMins = 0,
+						increaesBlogMins = function () {
+							blogMins += 1;
+							
+							if (blogMins > 59) {
+								console.log('increaesBlogMins interval cleared');
+								clearInterval(blogMinInterval);
+							}
+							
+							$timerMin.html(blogMins.toLocaleString(undefined,{minimumIntegerDigits: 2}));
+						},
+						blogMinInterval = setInterval(increaesBlogMins, updateBlogMinInterval);
 				};
 
 				/** 
@@ -142,15 +145,17 @@
 					// real mins/day by 365 blog days: 24 * 60 / 365 (min/blog day)
 					// above * 60 (sec) / 24 (h) = blog hr update every real sec (rate)
 					// below calculation is simplified. Removed 24/24.
-					var realMinuteToBlogDay = 60 / 365 * 60;
-					var updateBlogHrInterval = realMinuteToBlogDay * 1000;
-					var updateBlogMinInterval = updateBlogHrInterval / 60;
+					var
+						realMinuteToBlogDay = 60 / 365 * 60,
+						updateBlogHrInterval = realMinuteToBlogDay * 1000,
+						updateBlogMinInterval = updateBlogHrInterval / 60,
+						blogHrInterval = null;
 
 					// blog minutes counter first start
 					secTimer(updateBlogMinInterval);
 					
 					// increase blog hour + update year every 24 blog hr (~4m real)
-					var blogHrInterval = setInterval(function () {
+					blogHrInterval = setInterval(function () {
 						partBlogDaysToBlogHr += 1;
 						
 						// reset blog mins counter + start again
@@ -158,7 +163,7 @@
 
 						// 24h > updated blog day
 						if (partBlogDaysToBlogHr > 23) {
-							$('#day').html(blogDays += 1);
+							$timerDay.html(blogDays += 1);
 							partBlogDaysToBlogHr = 0;
 						}
 
@@ -171,7 +176,7 @@
 						}
 						
 						// all good? Set the blog hour
-						$('#hour').html(partBlogDaysToBlogHr.toLocaleString(undefined,{minimumIntegerDigits: 2}));
+						$timerHr.html(partBlogDaysToBlogHr.toLocaleString(undefined,{minimumIntegerDigits: 2}));
 						//console.log('inside interval');
 					}, updateBlogHrInterval);
 
