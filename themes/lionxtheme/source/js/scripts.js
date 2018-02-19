@@ -56,21 +56,6 @@
 					};
 				};
 
-				// desktop nav: disable dropdown anchor click
-				var desktopNav = function () {
-					$header.find('.fn-dropdown').on('click', function (e) {
-						e.preventDefault();
-					});
-				};
-
-				// mobile nav
-				var mobileNav = function () {
-					this.on('click', function () {
-						$(this).toggleClass('fa-bars fa-times');
-						$('#fn-mobmenu').toggleClass('fn-menu-active');
-					});
-				};
-
 				// url anchor
 				var urlAnchor = function () {
 					var
@@ -82,6 +67,25 @@
 							$('body, html').animate({scrollTop: $elem.offset().top - fixedHeaderSpacing}, 1000);
 						}, 500);
 					}
+				};
+
+				// cover down arrow (smooth) scroll to content
+				var contentScroll = function () {
+					
+					this.on('click', function(ev) {
+						console.log('contentScroll init', this);
+						ev.preventDefault();
+
+						var
+							// target element id
+							id = $(this).attr('href'),
+							$id = $(id),
+							// top position relative to the document
+							pos = $id.offset().top;
+
+						// animated top scrolling (-px for fixed nav header)
+						$('body, html').animate({scrollTop: pos}, 1000);
+					});
 				};
 
 				/** 
@@ -189,13 +193,12 @@
 					ON LOAD execute
 				*/
 				// GLOBAL
-				//desktopNav();
 				//urlAnchor();
 				setTimer();
 
 
 				// PARTICULAR PAGE
-
+				$('#fn-down').doOnce(contentScroll);
 
 
 				/*

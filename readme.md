@@ -25,22 +25,37 @@
 15. home: timer - init build
 16. home: timer - finish + clean up
 17. home: timer - add blog seconds counter
-
 18. home: timer - clean up
 19. header + fonts progress
+20. home: landing page progress
+21. cover down arrow + scroll animation
 
 
-* home: landing page
+* cover-page scroll transition
+* header transition cover-page
+
+* seasons home cover selection
+* proper logo
+
 * home: writing feed
-* home: page transitions
-* home: footer
-* post: layout
-* page: layout
-* pick 2x fonts
-* setup font files
-
+* footer
+* page transitions
+* post: landing cover (inc reading time est)
+* post: post section
+* post: scroll progress bar
+* timeline post archive page
+* home: responsive
+* post: responsive
+* timeline: responsive
+* favicon
 
 
 ## Phase 3: optimisations, enhancements, v2.0
 ### Phase 3 done's
-* home: timer - 100% accurate with reload
+* index covers with drawings
+* timer - 100% accurate with reload
+* interesting contact page
+* support page
+* convert jQuery to cooler JS
+* optimise website to the max
+* smooth scroll nice easing effects

@@ -11,13 +11,6 @@ MODULES styling
 
 /*! REUSABLE MODULES
 -------------------------------------------------------- */
-// module
-
-
-
-
-/*! HOME
--------------------------------------------------------- */
 // landing module
 @keyframes zoom {
 	0%   { transform: scale(1, 1); }
@@ -27,11 +20,24 @@ MODULES styling
 
 .m-landing {
 	height: 100vh;
+	min-height: 560px;
 
-	&__container {
+	&__cover {
 		@include cover('/images/mock-cover.jpg');
-		// min-height: 500px;
-		height: 100vh;
+		
+		height: 100%;
 		animation: zoom 10s linear infinite;
 	}
+
+	&__bot {
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
 }
+
+
+
+/*! HOME
+-------------------------------------------------------- */
+// module
