@@ -1,13 +1,26 @@
 /*!
 GLOBALS styling
-- header, navigation, footer, etc.
+- header, navigation, footer, etc (g-*)
 */
 
+.g-progress,
 .header {
 	width: 100%;
-	top: 0;
 	left: 0;
 	z-index: 10;
+}
+
+.g-progress {
+	height: 3px;
+	top: 0;
+	opacity: 0;
+	background: $navy-dark;
+	@include animate(default);
+}
+
+.header {
+	top: 3px;
+	@include animate(default);
 
 	&__container {
 		display: flex;
@@ -16,14 +29,43 @@ GLOBALS styling
 
 	&__logo {
 		@extend %fontNunito700;
-		font-size: 3rem;
-		line-height: 1;
+		
+		a { 
+			@include animate(default);
+			color: white;
+		}
+
+		span {
+			font-size: 3rem;
+			line-height: 1;
+		}
+
+		svg {
+			top: -4px;
+			font-size: 2.1rem;
+		}
 	}
 
 	&__timer {
 		margin-left: auto;
 		padding: 5px 10px;
-    background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.5);
+		color: white;
+		@include animate(default);
+	}
+
+	// page header
+	&.header-page {
+		background: rgba(255, 255, 255, 0.9);
+
+		.header {
+			&__logo a { color: black; }
+
+			&__timer {
+				background: none;
+				color: black;
+			}
+		}
 	}
 }
 

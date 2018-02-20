@@ -30,12 +30,15 @@
 20. home: landing page progress
 21. cover down arrow + scroll animation
 
+22. header transition cover-page
+23. brand colours
+24. setup progress bar
+25. proper logo
 
-* cover-page scroll transition
-* header transition cover-page
 
 * seasons home cover selection
-* proper logo
+* landing cover: heading
+* logo smaller in page mode
 
 * home: writing feed
 * footer
@@ -47,6 +50,7 @@
 * home: responsive
 * post: responsive
 * timeline: responsive
+* landing cover: onload animations
 * favicon
 
 

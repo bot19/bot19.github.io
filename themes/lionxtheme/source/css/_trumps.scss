@@ -53,6 +53,10 @@ TRUMPS CSS
 }
 .t-visible { visibility: visible; }
 .t-opacity-100 { opacity: 1; }
+.t-pointer { cursor: pointer; }
+
+// text
+// .has-text-centered
 
 // styling
 .t-bg-white { background-color: white; }
@@ -68,6 +72,8 @@ TRUMPS CSS
 // .is-flex
 // .is-block
 // .is-inline
+// .is-pulled-left
+// .is-pulled-right
 .t-flex {
 	&-1 {
 		@include breakpoint($tablet) {
@@ -78,7 +84,7 @@ TRUMPS CSS
 .t-left { float: left; }
 .t-right { float: right; }
 .t-block { display: block; } // since .is-block has !important
-.t-inline-block { display: inline-block; } // since .is-block has !important
+.t-inline-block { display: inline-block; } // since .is-inline-block has !important
 
 // block spacing
 .is-default {

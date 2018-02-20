@@ -19,7 +19,9 @@
 		},
 		variables = {
 			initViewportWidth: window.innerWidth,
-			headerHeightTrigger: 100
+			windowTopPosition: $window.scrollTop(),
+			scrollHeaderOffsent: 100,
+			headerTransHeight: 200
 		},
 		website = {
 			init: function () {	
@@ -27,7 +29,9 @@
 					$timerHr = $('#hour'),
 					$timerMin = $('#mins'),
 					$timerDay = $('#day'),
-					$timerYear = $('#year');
+					$timerYear = $('#year'),
+					$header = $('#fn-header'),
+					$progressBar = $('#fn-progress');
 
 				/*
 					UTILITY FUNCTIONS
@@ -71,20 +75,19 @@
 
 				// cover down arrow (smooth) scroll to content
 				var contentScroll = function () {
-					
 					this.on('click', function(ev) {
 						console.log('contentScroll init', this);
 						ev.preventDefault();
 
 						var
 							// target element id
-							id = $(this).attr('href'),
+							id = $(this).data('target'),
 							$id = $(id),
 							// top position relative to the document
 							pos = $id.offset().top;
 
 						// animated top scrolling (-px for fixed nav header)
-						$('body, html').animate({scrollTop: pos}, 1000);
+						$('body, html').animate({scrollTop: pos - variables.scrollHeaderOffsent}, 1000);
 					});
 				};
 
@@ -187,6 +190,25 @@
 					//console.log('startTimer');
 				};
 
+				// header scroll transition
+				var transitionHeader = function (window_top_position) {
+					console.log('transitionHeader init');
+
+					var
+						headerAnimationClass = 'header-page',
+						progressAnimationClass = 'an-opacity-1';
+
+					if (window_top_position > variables.headerTransHeight) {
+						// cover header > page header
+						$header.addClass(headerAnimationClass);
+						$progressBar.addClass(progressAnimationClass);
+					} else {
+						// page header > cover header
+						$header.removeClass(headerAnimationClass);
+						$progressBar.removeClass(progressAnimationClass);
+					}
+				};
+
 
 
 				/*
@@ -195,10 +217,12 @@
 				// GLOBAL
 				//urlAnchor();
 				setTimer();
+				transitionHeader(variables.windowTopPosition);
 
 
 				// PARTICULAR PAGE
 				$('#fn-down').doOnce(contentScroll);
+				$('#fn-down-bar').doOnce(contentScroll);
 
 
 				/*
@@ -224,10 +248,14 @@
 				*/
 				$window.scroll(function() {
 					// execute - can't debounce because func needs triggering at certain points
+					variables.windowTopPosition = $window.scrollTop();
+
 					// GLOBAL
+					transitionHeader(variables.windowTopPosition);
 
 
 					// PARTICULAR PAGE
+
 
 				});
 			},
