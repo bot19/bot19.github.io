@@ -36,16 +36,17 @@
 				/*
 					UTILITY FUNCTIONS
 				*/
+				// doOnce plugin; execute if element exists
 				jQuery.fn.doOnce = function( func ) {
-					// doOnce plugin; execute if element exists
 					this.length && func.apply( this );
 					return this;
-				}
-				var debounce = function (func, wait, immediate) {
-					/*
-						Returns a function, that, as long as it continues to be invoked, will not be triggered. The function will be called after it stops being called for N milliseconds. If `immediate` is passed, trigger the function on the leading edge, instead of the trailing.
-						http://stackoverflow.com/questions/2854407/javascript-jquery-window-resize-how-to-fire-after-the-resize-is-completed
-					*/
+				};
+
+				/*
+					Returns a function, that, as long as it continues to be invoked, will not be triggered. The function will be called after it stops being called for N milliseconds. If `immediate` is passed, trigger the function on the leading edge, instead of the trailing.
+					http://stackoverflow.com/questions/2854407/javascript-jquery-window-resize-how-to-fire-after-the-resize-is-completed
+				*/
+				var debounce = function (func, wait, immediate) {	
 					var timeout;
 					return function() {
 						var context = this, args = arguments;
@@ -60,6 +61,25 @@
 					};
 				};
 
+				// Array shuffling prototype
+				Array.prototype.shuffle = function(){
+					var counter = this.length, temp, index;
+					
+					// While there are elements in the array
+					while (counter > 0) {
+						// Pick a random index
+						index = (Math.random() * counter--) | 0;
+						
+						// And swap the last element with it
+						temp = this[counter];
+						this[counter] = this[index];
+						this[index] = temp;
+					}
+				};
+
+				/*
+					CUSTOM FUNCTIONS
+				*/
 				// url anchor
 				var urlAnchor = function () {
 					var
@@ -132,7 +152,7 @@
 							blogMins += 1;
 							
 							if (blogMins > 59) {
-								console.log('increaesBlogMins interval cleared');
+								//console.log('increaesBlogMins interval cleared');
 								clearInterval(blogMinInterval);
 							}
 							
@@ -209,6 +229,40 @@
 					}
 				};
 
+				// landing cover heading animation
+				var landingCoverHeading = function () {
+					var
+					$heading = this,
+					headingArray = null,
+					char = null,
+					$char = null,
+					headingInterval = null;
+					
+					// get heading letters into array
+					headingArray = $heading.text();
+					headingArray = headingArray.trim().split('');
+					
+					// shuffle array
+					headingArray.shuffle();
+					console.log('landingCoverHeading init', headingArray);
+					
+					// first array letter show and remove from array
+					headingInterval = setInterval(function () {
+						char = headingArray.shift(); // return + remove first array item
+						char = char === '#' ? 'hash' : char; // change # to 'hash'
+						// find character and show
+						$char = $heading.children('.char-hidden.char-' + char).first();
+						$char.removeClass('char-hidden');
+						
+						console.log('headingInterval', $char, headingArray.length);
+						
+						if (headingArray.length === 0) {
+							clearInterval(headingInterval);
+							// on complete, (call function to) loop through words
+						}
+					}, 300);
+				};
+
 
 
 				/*
@@ -223,6 +277,7 @@
 				// PARTICULAR PAGE
 				$('#fn-down').doOnce(contentScroll);
 				$('#fn-down-bar').doOnce(contentScroll);
+				$('#fn-lcover-heading').doOnce(landingCoverHeading);
 
 
 				/*

@@ -29,15 +29,14 @@
 19. header + fonts progress
 20. home: landing page progress
 21. cover down arrow + scroll animation
-
 22. header transition cover-page
 23. brand colours
 24. setup progress bar
 25. proper logo
+26. landing cover: heading + animation (progress)
 
-
+* landing cover: heading animation (complete)
 * seasons home cover selection
-* landing cover: heading
 * logo smaller in page mode
 
 * home: writing feed

@@ -29,6 +29,24 @@ MODULES styling
 		animation: zoom 10s linear infinite;
 	}
 
+	&__heading {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&__h1 {
+		font-size: 8rem;
+		color: white;
+
+		span {
+			opacity: 0.1;
+			@include animate(default);
+		}
+
+		.char-hidden { opacity: 0; }
+	}
+
 	&__bot {
 		bottom: 0;
 		left: 0;
