@@ -31,6 +31,7 @@
 					$timerDay = $('#day'),
 					$timerYear = $('#year'),
 					$header = $('#fn-header'),
+					$cover = $('#fn-cover'),
 					$progressBar = $('#fn-progress');
 
 				/*
@@ -130,6 +131,9 @@
 					// set blog day (hr) and blog year (day)
 					$timerYear.html(timeDiffDays);
 					$timerDay.html(blogDays); // round down, decimal used for hours
+
+					// figured out blog day, set cover season bg!
+					homeCoverSeasons(blogDays);
 					
 					// set blog hour
 					partBlogDaysToBlogHr = Math.round(hrToBlogDays % 1 * 24);
@@ -192,6 +196,8 @@
 						if (partBlogDaysToBlogHr > 23) {
 							$timerDay.html(blogDays += 1);
 							partBlogDaysToBlogHr = 0;
+							// blog day changed, might need to update cover season bg!
+							homeCoverSeasons(blogDays);
 						}
 
 						// at day 365, trigger moment.js to update day, year + reset hr to 0
@@ -229,8 +235,8 @@
 					}
 				};
 
-				// landing cover heading animation
-				var landingCoverHeading = function () {
+				// home cover heading animation part 1
+				var homeCoverHeading = function () {
 					var
 					$heading = this,
 					headingArray = null,
@@ -254,13 +260,120 @@
 						$char = $heading.children('.char-hidden.char-' + char).first();
 						$char.removeClass('char-hidden');
 						
-						console.log('headingInterval', $char, headingArray.length);
+						//console.log('headingInterval', $char, headingArray.length);
 						
 						if (headingArray.length === 0) {
 							clearInterval(headingInterval);
 							// on complete, (call function to) loop through words
+							homeCoverHeadingWordSwap($heading);
 						}
 					}, 300);
+				};
+
+				// home cover heading animation part 2
+				var homeCoverHeadingWordSwap = function ($heading) {
+					console.log('homeCoverHeadingWordSwap init');
+
+					// object of words + duration to animate through
+					var
+						words = [
+							{word: '#soulwords', duration: 1000, opacity: 0.5},
+							{word: '#heartwords', duration: 800, opacity: 0.5},
+							{word: '#lifewords', duration: 700, opacity: 0.5},
+							{word: '#mylife', duration: 600, opacity: 0.6},
+							{word: '#yourlife', duration: 500, opacity: 0.6},
+							{word: '#ourlife', duration: 400, opacity: 0.6},
+							{word: '#anadventure', duration: 300, opacity: 0.7},
+							{word: '#together', duration: 200, opacity: 0.8},
+							{word: '#sidebyside', duration: 200, opacity: 0.8},
+							{word: '#asone', duration: 200, opacity: 0.8},
+							{word: '#doinglife', duration: 200, opacity: 0.8},
+							{word: '#sharing', duration: 200, opacity: 0.9},
+							{word: '#experiencing', duration: 200, opacity: 0.9},
+							{word: '#learning', duration: 200, opacity: 0.9},
+							{word: '#crying', duration: 200, opacity: 0.9},
+							{word: '#resting', duration: 200, opacity: 0.9},
+							{word: '#laughing', duration: 200, opacity: 0.9},
+							{word: '#enjoying', duration: 200, opacity: 0.9},
+							{word: '#changing', duration: 200, opacity: 0.9},
+							{word: '#living', duration: 200, opacity: 0.9},
+							{word: '#forever', duration: 200, opacity: 1}
+						],
+						i = 0,
+						animate = function (index, words) {
+							var timeout = setTimeout(function() {
+								// execute code
+								//console.log(index, words[index].word);
+								$heading.text(words[index].word).css('opacity', words[index].opacity);
+
+								i++; // increment
+								
+								// end of array, exit loop
+								if (i === words.length) {
+									clearTimeout(timeout);
+									return;
+								}
+								
+								// animate next word
+								animate(i, words);
+							}, words[index].duration);
+						};
+
+					// loop
+					animate(i, words);
+				};
+
+				// home cover bg seasons
+				var homeCoverSeasons = function (day) {
+					
+					// covers + styling
+					var covers = {
+						winter: {
+							url: '/images/cover-winter.jpg',
+							position: 'left center'
+						},
+						spring: {
+							url: '/images/cover-spring.jpg',
+							position: 'center center'
+						},
+						summer: {
+							url: '/images/cover-summer.jpg',
+							position: 'center center'
+						},
+						autumn: {
+							url: '/images/cover-autumn.jpg',
+							position: 'center center'
+						}
+					};
+					
+					// function to set
+					var setCover = function (cover, position) {
+						console.log('homeCoverSeasons init', day);
+						$cover.css({
+							'background-image': 'url(' + cover + ')',
+							'background-position': position
+						});
+					};
+
+					switch (true) {
+						case (day < 60): // winter (jan, feb)
+						case (day > 334 && day < 366): // winter (dec)
+							// code
+							setCover(covers.winter.url, covers.winter.position);
+							break;
+						case (day > 59 && day < 152): // spring (mar, april, may)
+							// code
+							setCover(covers.spring.url, covers.spring.position);
+							break;
+						case (day > 151 && day < 244): // summer (june, july, aug)
+							// code
+							setCover(covers.summer.url, covers.summer.position);
+							break;
+						case (day > 243 && day < 335): // autumn (sep, oct, nov)
+							// code
+							setCover(covers.autumn.url, covers.autumn.position);
+							break;
+					}
 				};
 
 
@@ -275,9 +388,9 @@
 
 
 				// PARTICULAR PAGE
-				$('#fn-down').doOnce(contentScroll);
+				$cover.doOnce(contentScroll);
 				$('#fn-down-bar').doOnce(contentScroll);
-				$('#fn-lcover-heading').doOnce(landingCoverHeading);
+				$('#fn-hcover-heading').doOnce(homeCoverHeading);
 
 
 				/*

@@ -34,10 +34,18 @@
 24. setup progress bar
 25. proper logo
 26. landing cover: heading + animation (progress)
+27. landing cover: heading animation (complete)
+28. prepare home covers (square, suitable to white text, progressive)
+29. seasons home cover selection func.
 
-* landing cover: heading animation (complete)
-* seasons home cover selection
+
+* timer: update styling + positioning
+* landing cover: heading - delay init by 1-2s
+* cover loader graphics
+* timer: animate in after timer start
 * logo smaller in page mode
+
+
 
 * home: writing feed
 * footer
@@ -49,7 +57,6 @@
 * home: responsive
 * post: responsive
 * timeline: responsive
-* landing cover: onload animations
 * favicon
 
 
