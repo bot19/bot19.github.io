@@ -38,18 +38,19 @@
 28. prepare home covers (square, suitable to white text, progressive)
 29. seasons home cover selection func.
 
-
-* timer: update styling + positioning
-* landing cover: heading - delay init by 1-2s
-* cover loader graphics
-* timer: animate in after timer start
-* logo smaller in page mode
-
+30. timer: update styling + positioning
+31. logo smaller in page mode
+33. cover loader graphics
+34. timer: animate in after timer start
+35. landing cover: heading - delayed + init after cover chosen
 
 
+* cover heading: click also auto scrolls
 * home: writing feed
 * footer
 * page transitions
+
+* home: cover select func. only for home page
 * post: landing cover (inc reading time est)
 * post: post section
 * post: scroll progress bar

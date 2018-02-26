@@ -21,7 +21,9 @@
 			initViewportWidth: window.innerWidth,
 			windowTopPosition: $window.scrollTop(),
 			scrollHeaderOffsent: 100,
-			headerTransHeight: 200
+			headerTransHeight: 200,
+			homeHeadingAnimationDelay: 1000,
+			firstTimeHeading: true
 		},
 		website = {
 			init: function () {	
@@ -132,7 +134,7 @@
 					$timerYear.html(timeDiffDays);
 					$timerDay.html(blogDays); // round down, decimal used for hours
 
-					// figured out blog day, set cover season bg!
+					// figured out blog day, set cover season bg! (if home)
 					homeCoverSeasons(blogDays);
 					
 					// set blog hour
@@ -184,6 +186,9 @@
 
 					// blog minutes counter first start
 					secTimer(updateBlogMinInterval);
+
+					// show timer
+					$('#fn-timer').removeClass('an-opacity-0');
 					
 					// increase blog hour + update year every 24 blog hr (~4m real)
 					blogHrInterval = setInterval(function () {
@@ -196,7 +201,7 @@
 						if (partBlogDaysToBlogHr > 23) {
 							$timerDay.html(blogDays += 1);
 							partBlogDaysToBlogHr = 0;
-							// blog day changed, might need to update cover season bg!
+							// blog day changed, update cover season bg? (if home)
 							homeCoverSeasons(blogDays);
 						}
 
@@ -374,6 +379,14 @@
 							setCover(covers.autumn.url, covers.autumn.position);
 							break;
 					}
+
+					// getting cover, after Xs, start heading animation (once)
+					if (variables.firstTimeHeading) {
+						variables.firstTimeHeading = false;
+						setTimeout(function () {
+							$('#fn-hcover-heading').doOnce(homeCoverHeading);
+						}, variables.homeHeadingAnimationDelay);
+					}
 				};
 
 
@@ -390,7 +403,6 @@
 				// PARTICULAR PAGE
 				$cover.doOnce(contentScroll);
 				$('#fn-down-bar').doOnce(contentScroll);
-				$('#fn-hcover-heading').doOnce(homeCoverHeading);
 
 
 				/*

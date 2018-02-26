@@ -22,44 +22,70 @@ GLOBALS styling
 	top: 3px;
 	@include animate(default);
 
-	&__container {
-		display: flex;
-		align-items: center;
+	.container { z-index: 1; }
+
+	&__bg {
+		background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9));
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 0;
+		@include animate(default);
 	}
 
 	&__logo {
 		@extend %fontNunito700;
-		
-		a { 
-			@include animate(default);
-			color: white;
-		}
+		@include animate(default);
+		color: white;
+		top: 2px;
+
+		&:hover { color: white; }
 
 		span {
+			@include animate(default);
 			font-size: 3rem;
 			line-height: 1;
 		}
 
 		svg {
+			@include animate(default);
 			top: -4px;
 			font-size: 2.1rem;
 		}
 	}
 
 	&__timer {
-		margin-left: 0.5rem;
 		padding: 5px 10px;
+		border-radius: 3px;
 		background: rgba(0, 0, 0, 0.5);
 		color: white;
+		opacity: 0.66;
 		@include animate(default);
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		@extend %fontNunito700;
+		text-transform: uppercase;
+		font-size: 0.7rem;
+		line-height: 1;
 	}
+
+	&__timer-desc { opacity: 0.5; }
 
 	// page header
 	&.header-page {
-		background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
-
 		.header {
-			&__logo a { color: black; }
+			&__bg { height: 100%; }
+
+			&__logo {
+				color: black;
+			
+				span { font-size: 2rem; }
+				svg {
+					top: -3px;
+					font-size: 1.38rem;
+				}
+			}
 
 			&__timer {
 				background: none;

@@ -22,6 +22,11 @@ MODULES styling
 	height: 100vh;
 	min-height: 560px;
 
+	&__loading {
+		z-index: -1;
+		opacity: 0.33;
+	}
+
 	&__cover {
 		@include cover('');
 		cursor: pointer;

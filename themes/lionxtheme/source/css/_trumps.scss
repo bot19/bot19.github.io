@@ -28,6 +28,11 @@ TRUMPS CSS
 		margin-left: auto;
 		margin-right: auto;
 	}
+	&--mid-cen { // need: positioning class, relative or absolute
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 }
 .t-flex-align {
 	// since normal alignment doesn't work well in flex child containers
