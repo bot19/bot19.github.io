@@ -37,16 +37,15 @@
 27. landing cover: heading animation (complete)
 28. prepare home covers (square, suitable to white text, progressive)
 29. seasons home cover selection func.
-
 30. timer: update styling + positioning
 31. logo smaller in page mode
 33. cover loader graphics
 34. timer: animate in after timer start
 35. landing cover: heading - delayed + init after cover chosen
+36. cover heading: click also auto scrolls
+37. home: writing feed - heading
+38. home: writing feed
 
-
-* cover heading: click also auto scrolls
-* home: writing feed
 * footer
 * page transitions
 
@@ -67,6 +66,7 @@
 * timer - 100% accurate with reload
 * interesting contact page
 * support page
+* credits page (for photos)
 * convert jQuery to cooler JS
 * optimise website to the max
 * smooth scroll nice easing effects

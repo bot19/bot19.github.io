@@ -11,20 +11,22 @@ TRUMPS CSS
 
 // misc
 .t-align {
-	&--middle {
+	&--mid { // need: t-relative 
 		top: 50%;
-		position: relative;
 		transform: translate(0, -50%);
 
-		&-1 {
+		&-1 { // need: t-relative
 			@include breakpoint($tablet) {
 				top: 50%;
-				position: relative;
 				transform: translate(0, -50%);
 			}
 		}
 	}
-	&--center {
+	&--cen {  // need: t-relative 
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
+	&--cen-m {
 		margin-left: auto;
 		margin-right: auto;
 	}

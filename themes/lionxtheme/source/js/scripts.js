@@ -20,7 +20,7 @@
 		variables = {
 			initViewportWidth: window.innerWidth,
 			windowTopPosition: $window.scrollTop(),
-			scrollHeaderOffsent: 100,
+			scrollHeaderOffsent: 50,
 			headerTransHeight: 200,
 			homeHeadingAnimationDelay: 1000,
 			firstTimeHeading: true
@@ -34,6 +34,7 @@
 					$timerYear = $('#year'),
 					$header = $('#fn-header'),
 					$cover = $('#fn-cover'),
+					$coverHeading = $('#fn-hcover-heading'),
 					$progressBar = $('#fn-progress');
 
 				/*
@@ -384,7 +385,7 @@
 					if (variables.firstTimeHeading) {
 						variables.firstTimeHeading = false;
 						setTimeout(function () {
-							$('#fn-hcover-heading').doOnce(homeCoverHeading);
+							$coverHeading.doOnce(homeCoverHeading);
 						}, variables.homeHeadingAnimationDelay);
 					}
 				};
@@ -402,6 +403,7 @@
 
 				// PARTICULAR PAGE
 				$cover.doOnce(contentScroll);
+				$coverHeading.doOnce(contentScroll);
 				$('#fn-down-bar').doOnce(contentScroll);
 
 

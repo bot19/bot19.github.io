@@ -40,7 +40,7 @@ MODULES styling
 		transform: translate(-50%, -50%);
 	}
 
-	&__h1 {
+	&__h1--home {
 		font-size: 8rem;
 		color: white;
 
@@ -57,12 +57,57 @@ MODULES styling
 		left: 0;
 		width: 100%;
 	}
-
-	&__down {  }
 }
 
 
 
 /*! HOME
 -------------------------------------------------------- */
-// module
+// post feed
+.m-pfeed {
+	&__post {
+		height: 420px;
+
+		&--sec { height: 320px; }
+
+		&:hover {
+			.m-pfeed__bg { filter: blur(5px); }
+			.m-pfeed__read { max-height: 40px; }
+		}
+	}
+
+	&__bg {
+		@include cover('');
+		@include animate(0.4s);
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		transform: scale(1.05); // hide blur edges
+	}
+
+	&__info {
+		width: 70%;
+		left: 2rem;
+		bottom: 2rem;
+		z-index: 1;
+
+		&--sec {
+			width: auto;
+			right: 2rem;
+		}
+	}
+
+	&__heading { text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); }
+
+	&__stats { opacity: 0.5; }
+
+	&__read {
+		@include animate(default);
+		max-height: 0;
+	}
+
+	&__read-spacer { padding-top: 0.5rem; }
+
+	&__arrow { transform: translateY(2px); }
+}
