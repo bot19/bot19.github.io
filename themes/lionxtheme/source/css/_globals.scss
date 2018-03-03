@@ -99,3 +99,22 @@ GLOBALS styling
 	}
 }
 
+.footer {
+	background: $navy-dark;
+	color: $navy-pale;
+
+	&__bg {
+		top: -6rem;
+		left: -1rem;
+		font-size: 18rem;
+		opacity: 0.1;
+	}
+
+	&__twitter {
+		color: $navy-pale;
+		opacity: 0.33;
+		cursor: default;
+
+		&:hover { color: $navy-pale; }
+	}
+}

@@ -133,6 +133,7 @@
 					
 					// set blog day (hr) and blog year (day)
 					$timerYear.html(timeDiffDays);
+					$('#fn-footer-year').html(timeDiffDays); // for footer too! :D
 					$timerDay.html(blogDays); // round down, decimal used for hours
 
 					// figured out blog day, set cover season bg! (if home)
@@ -283,27 +284,26 @@
 					// object of words + duration to animate through
 					var
 						words = [
-							{word: '#soulwords', duration: 1000, opacity: 0.5},
-							{word: '#heartwords', duration: 800, opacity: 0.5},
-							{word: '#lifewords', duration: 700, opacity: 0.5},
-							{word: '#mylife', duration: 600, opacity: 0.6},
-							{word: '#yourlife', duration: 500, opacity: 0.6},
-							{word: '#ourlife', duration: 400, opacity: 0.6},
-							{word: '#anadventure', duration: 300, opacity: 0.7},
-							{word: '#together', duration: 200, opacity: 0.8},
-							{word: '#sidebyside', duration: 200, opacity: 0.8},
-							{word: '#asone', duration: 200, opacity: 0.8},
-							{word: '#doinglife', duration: 200, opacity: 0.8},
-							{word: '#sharing', duration: 200, opacity: 0.9},
-							{word: '#experiencing', duration: 200, opacity: 0.9},
-							{word: '#learning', duration: 200, opacity: 0.9},
-							{word: '#crying', duration: 200, opacity: 0.9},
-							{word: '#resting', duration: 200, opacity: 0.9},
-							{word: '#laughing', duration: 200, opacity: 0.9},
-							{word: '#enjoying', duration: 200, opacity: 0.9},
-							{word: '#changing', duration: 200, opacity: 0.9},
-							{word: '#living', duration: 200, opacity: 0.9},
-							{word: '#forever', duration: 200, opacity: 1}
+							{word: '#soulwords', delayBefore: 1000, opacity: 0.5},
+							{word: '#heartwords', delayBefore: 900, opacity: 0.5},
+							{word: '#lifewords', delayBefore: 800, opacity: 0.5},
+							{word: '#thislife', delayBefore: 700, opacity: 0.6},
+							{word: '#ourlives', delayBefore: 600, opacity: 0.6},
+							{word: '#anadventure', delayBefore: 500, opacity: 0.7},
+							{word: '#together', delayBefore: 400, opacity: 0.8},
+							{word: '#sidebyside', delayBefore: 300, opacity: 0.8},
+							{word: '#asone', delayBefore: 300, opacity: 0.8},
+							{word: '#doinglife', delayBefore: 300, opacity: 0.8},
+							{word: '#sharing', delayBefore: 200, opacity: 0.9},
+							{word: '#experiencing', delayBefore: 200, opacity: 0.9},
+							{word: '#learning', delayBefore: 200, opacity: 0.9},
+							{word: '#crying', delayBefore: 200, opacity: 0.9},
+							{word: '#resting', delayBefore: 200, opacity: 0.9},
+							{word: '#laughing', delayBefore: 200, opacity: 0.9},
+							{word: '#enjoying', delayBefore: 200, opacity: 0.9},
+							{word: '#changing', delayBefore: 200, opacity: 0.9},
+							{word: '#living', delayBefore: 200, opacity: 0.9},
+							{word: '#forever', delayBefore: 200, opacity: 1}
 						],
 						i = 0,
 						animate = function (index, words) {
@@ -322,7 +322,7 @@
 								
 								// animate next word
 								animate(i, words);
-							}, words[index].duration);
+							}, words[index].delayBefore);
 						};
 
 					// loop

@@ -43,30 +43,34 @@
 34. timer: animate in after timer start
 35. landing cover: heading - delayed + init after cover chosen
 36. cover heading: click also auto scrolls
-37. home: writing feed - heading
-38. home: writing feed
+37. home: post feed - heading
+38. home: post feed
+39. tweaks: home heading animation, post feed
+40. footer
 
-* footer
-* page transitions
-
-* home: cover select func. only for home page
 * post: landing cover (inc reading time est)
-* post: post section
+* post: writing section
+* post: writing footer (btn back home)
+
 * post: scroll progress bar
-* timeline post archive page
+* page transitions
+* home: cover select func. only for home page
 * home: responsive
 * post: responsive
-* timeline: responsive
 * favicon
+* test + fixes
+* live
 
 
 ## Phase 3: optimisations, enhancements, v2.0
 ### Phase 3 done's
-* index covers with drawings
-* timer - 100% accurate with reload
-* interesting contact page
-* support page
-* credits page (for photos)
-* convert jQuery to cooler JS
-* optimise website to the max
-* smooth scroll nice easing effects
+* page: timeline page (post archieve) [after ~5 posts]
+* func: randomised footer quote
+* enhancement-style: index covers with drawings
+* enhancement-func: timer - 100% accurate with reload
+* page: interesting contact page
+* page: support page
+* page: credits page (for photos)
+* enhancement-func: convert jQuery to cooler JS
+* enhancement-func: optimise website to the max
+* enhancement-effect: smooth scroll nice easing effects
