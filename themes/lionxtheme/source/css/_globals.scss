@@ -110,6 +110,8 @@ GLOBALS styling
 		opacity: 0.1;
 	}
 
+	&__info { z-index: 1; }
+
 	&__twitter {
 		color: $navy-pale;
 		opacity: 0.33;

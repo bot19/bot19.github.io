@@ -20,7 +20,7 @@
 		variables = {
 			initViewportWidth: window.innerWidth,
 			windowTopPosition: $window.scrollTop(),
-			scrollHeaderOffsent: 50,
+			scrollHeaderOffsent: 60,
 			headerTransHeight: 200,
 			homeHeadingAnimationDelay: 1000,
 			firstTimeHeading: true
@@ -33,8 +33,6 @@
 					$timerDay = $('#day'),
 					$timerYear = $('#year'),
 					$header = $('#fn-header'),
-					$cover = $('#fn-cover'),
-					$coverHeading = $('#fn-hcover-heading'),
 					$progressBar = $('#fn-progress');
 
 				/*
@@ -225,7 +223,7 @@
 
 				// header scroll transition
 				var transitionHeader = function (window_top_position) {
-					console.log('transitionHeader init');
+					//console.log('transitionHeader init');
 
 					var
 						headerAnimationClass = 'header-page',
@@ -355,7 +353,7 @@
 					// function to set
 					var setCover = function (cover, position) {
 						console.log('homeCoverSeasons init', day);
-						$cover.css({
+						$('#fn-cover').css({
 							'background-image': 'url(' + cover + ')',
 							'background-position': position
 						});
@@ -385,7 +383,7 @@
 					if (variables.firstTimeHeading) {
 						variables.firstTimeHeading = false;
 						setTimeout(function () {
-							$coverHeading.doOnce(homeCoverHeading);
+							$('#fn-hcover-heading').doOnce(homeCoverHeading);
 						}, variables.homeHeadingAnimationDelay);
 					}
 				};
@@ -402,9 +400,7 @@
 
 
 				// PARTICULAR PAGE
-				$cover.doOnce(contentScroll);
-				$coverHeading.doOnce(contentScroll);
-				$('#fn-down-bar').doOnce(contentScroll);
+				$('#fn-next').doOnce(contentScroll);
 
 
 				/*

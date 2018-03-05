@@ -35,27 +35,43 @@ MODULES styling
 	}
 
 	&__heading {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+		left: 0;
+		width: 100%;
+		padding: 0 1rem;
 	}
 
-	&__h1--home {
-		font-size: 8rem;
-		color: white;
+	&__h1 {
+		&--home {
+			font-size: 8rem;
 
-		span {
-			opacity: 0.5;
-			@include animate(default);
+			span {
+				opacity: 0.5;
+				@include animate(default);
+			}
+
+			.char-hidden { opacity: 0; }
 		}
+	}
 
-		.char-hidden { opacity: 0; }
+	&__stats {
+		opacity: 0.5;
+		background: black;
+		padding: 0.25rem 0.5rem 0.125rem;
+		border-radius: 3px;
+		margin-top: 1rem;
 	}
 
 	&__bot {
 		bottom: 0;
 		left: 0;
 		width: 100%;
+	}
+
+	&__next {
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 	}
 }
 
@@ -98,8 +114,6 @@ MODULES styling
 		}
 	}
 
-	&__heading { text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); }
-
 	&__stats { opacity: 0.5; }
 
 	&__read {
@@ -110,4 +124,33 @@ MODULES styling
 	&__read-spacer { padding-top: 0.5rem; }
 
 	&__arrow { transform: translateY(2px); }
+}
+
+
+/*! POSTS
+-------------------------------------------------------- */
+// writing
+.m-writing {
+
+	&.override {
+		h2, h3, h4, blockquote {
+			@extend %fontDelius;
+			font-weight: bold;
+		}
+	}
+
+	blockquote {
+		line-height: 1.4;
+		margin-bottom: 4rem;
+	}
+
+	h2, h3, h4, p, li { margin-bottom: 2rem; }
+
+	a:hover { text-decoration: underline; }
+
+	ul { list-style: circle; }
+
+	ul, ol {
+		margin-left: 2rem;
+	}
 }

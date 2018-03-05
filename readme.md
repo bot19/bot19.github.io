@@ -47,14 +47,18 @@
 38. home: post feed
 39. tweaks: home heading animation, post feed
 40. footer
+41. landing cover: content scroll update
+42. home: cover select func. only for home page (unnecessary, checked)
+43. post: landing cover (inc reading time est)
+44. post: writing section
 
-* post: landing cover (inc reading time est)
-* post: writing section
+* review writing cover/section headings
 * post: writing footer (btn back home)
-
 * post: scroll progress bar
+* home: post feed - coming soon post styling
+* home: post feed - integrate
 * page transitions
-* home: cover select func. only for home page
+
 * home: responsive
 * post: responsive
 * favicon

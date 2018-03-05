@@ -21,17 +21,16 @@ FONTS CSS
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-	font-family: 'Delius Swash Caps';
+	font-family: 'Delius';
 	font-style: normal;
 	font-weight: 400;
-	// src: local('Delius Swash Caps'), local('DeliusSwashCaps-Regular'), url(https://fonts.gstatic.com/s/deliusswashcaps/v9/oY1E8fPLr7v4JWCExZpWebxVKORpXUeaIGajv1Yt.woff2) format('woff2');
-	src: local('Delius Swash Caps'), local('DeliusSwashCaps-Regular'), url(/temp/oY1E8fPLr7v4JWCExZpWebxVKORpXUeaIGajv1Yt.woff2) format('woff2');
+	src: local('Delius-Regular'), url(https://fonts.gstatic.com/s/delius/v7/PN_xRfK0pW_9e1rdZsg_rz7b_g.woff2) format('woff2');
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 // prettify names
 $nunito: 'Nunito';
-$delius: 'Delius Swash Caps';
+$delius: 'Delius';
 
 // define font styles & fallbacks
 %fontDelius {
@@ -93,7 +92,8 @@ body {
 }
 
 .f-h3,
-.m-writing h3 { // description heading
+.m-writing h3,
+.m-writing blockquote { // description heading
 	@extend %fontNunito700;
 	font-size: 1.4rem;
 	line-height: 1.2; // default: multi line
@@ -116,14 +116,14 @@ body {
 	@include breakpoint($fullhd) {  }
 }
 
-.f-writing {
+.m-writing {
 	@extend %fontDelius;
 	// font-size: 1.2rem;
 	// line-height: 1.4;
 
 	@include breakpoint($tablet) {  }
 	@include breakpoint($desktop) {  }
-	@include breakpoint($widescreen) {  }
+	@include breakpoint($widescreen) { font-size: 1.4rem; }
 	@include breakpoint($fullhd) {  }
 }
 

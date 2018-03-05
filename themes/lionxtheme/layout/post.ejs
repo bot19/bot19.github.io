@@ -2,3 +2,52 @@
 	Post page template
 	* all writing/posts will use this template
 -->
+
+<!-- landing cover -->
+<section class="m-landing no-overflow t-relative">
+	
+	<!-- loading spinner -->
+	<div class="m-landing__loading t-absolute t-align--mid-cen has-text-centered">
+		<div class="is-inline-block">
+			<i class="fas fa-circle-notch fa-spin fa-2x "></i>
+		</div>
+		<div>Loading</div>
+	</div>
+
+	<!-- cover bg -->
+	<div class="m-landing__cover" style="background-image: url('<%- config.root %><%- page.path %>cover.jpg');"></div>
+	
+	<!-- mid block: heading -->
+	<div class="m-landing__heading t-absolute t-align--mid has-text-centered has-text-white">
+		<span class="m-landing__h1 f-h1 cu-text-shadow">
+			<%- page.title %>
+		</span>
+		<div class="has-text-white m-landing__stats f-h4 is-inline-block">Year <strong><%- page.year %></strong> ~ <strong><%- page.wordCount %></strong> words</div>
+	</div>
+
+	<!-- bottom block -->
+	<div class="section is-p0 m-landing__bot t-absolute">
+		<div class="container">
+			<div class="columns">
+				<div class="column has-text-white">
+					<i class="fas fa-caret-down fa-3x"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- cover (scroll-down) btn -->
+	<div class="m-landing__next t-absolute t-pointer" data-target="#anchor-content" id="fn-next"></div>
+</section>
+
+<!-- writing section -->
+<section class="section is-sml">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2 m-writing override" id="anchor-content">
+					<%- page.content %>
+			</div>
+		</div>
+	</div>
+</section>
+
