@@ -93,7 +93,7 @@ body {
 
 .f-h3,
 .m-writing h3,
-.m-writing blockquote { // description heading
+.m-writing span { // description heading
 	@extend %fontNunito700;
 	font-size: 1.4rem;
 	line-height: 1.2; // default: multi line
@@ -104,8 +104,7 @@ body {
 	@include breakpoint($fullhd) {  }
 }
 
-.f-h4,
-.m-writing h4 { // small heading, or highlight text
+.f-h4 { // small heading, or highlight text
 	@extend %fontNunito200;
 	font-size: 1.4rem;
 	line-height: 1.2;

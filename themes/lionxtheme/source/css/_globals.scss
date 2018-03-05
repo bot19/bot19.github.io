@@ -16,6 +16,13 @@ GLOBALS styling
 	opacity: 0;
 	background: $navy-dark;
 	@include animate(default);
+
+	&__bar {
+		width: 0;
+		height: 3px;
+		background: $red-pale;
+		@include animate(default);
+	}
 }
 
 .header {

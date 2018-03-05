@@ -33,7 +33,8 @@
 					$timerDay = $('#day'),
 					$timerYear = $('#year'),
 					$header = $('#fn-header'),
-					$progressBar = $('#fn-progress');
+					$progressBar = $('#fn-progress'),
+					$postCover = $('#fn-post');
 
 				/*
 					UTILITY FUNCTIONS
@@ -388,6 +389,35 @@
 					}
 				};
 
+				/** 
+				 * reading progress bar @posts
+				 * progress tracks bottom, not top of window
+				 * progress tracks writing section, not comments or footer
+				*/
+				var readingProgressBar = function (window_top_position) {
+					// only on post pages
+					if (!$postCover.length) return;
+					
+					// calculate everything
+					var 
+						winBottom = $window.height(),
+						contentHeight = $postCover.outerHeight() + $('#fn-writing').outerHeight(),
+						position = window_top_position + winBottom,
+						progress = null;
+					
+					// current progress
+					if (position > contentHeight) {
+						// past writing section
+						progress = 100;
+					} else {
+						progress = Math.round(position / contentHeight * 100);
+					}
+					
+					// set
+					$('#fn-bar').css('width', progress + '%');
+					//console.log('readingProgressBar init', progress);
+				};
+
 
 
 				/*
@@ -398,20 +428,21 @@
 				setTimer();
 				transitionHeader(variables.windowTopPosition);
 
-
 				// PARTICULAR PAGE
 				$('#fn-next').doOnce(contentScroll);
-
+				readingProgressBar(variables.windowTopPosition);
 
 				/*
 					ON WINDOW RESIZE execute
 					* only fires X ms post resized
 				*/
 				var initPostResize = debounce(function() {
+					variables.windowTopPosition = $window.scrollTop();
+
 					// GLOBAL
 
 					// PARTICULAR PAGE
-
+					readingProgressBar(variables.windowTopPosition);
 
 					// IE11
 					//if ($ie1011.length) {}
@@ -431,9 +462,8 @@
 					// GLOBAL
 					transitionHeader(variables.windowTopPosition);
 
-
 					// PARTICULAR PAGE
-
+					readingProgressBar(variables.windowTopPosition);
 
 				});
 			},

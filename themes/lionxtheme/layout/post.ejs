@@ -4,7 +4,7 @@
 -->
 
 <!-- landing cover -->
-<section class="m-landing no-overflow t-relative">
+<section class="m-landing no-overflow t-relative" id="fn-post">
 	
 	<!-- loading spinner -->
 	<div class="m-landing__loading t-absolute t-align--mid-cen has-text-centered">
@@ -19,9 +19,9 @@
 	
 	<!-- mid block: heading -->
 	<div class="m-landing__heading t-absolute t-align--mid has-text-centered has-text-white">
-		<span class="m-landing__h1 f-h1 cu-text-shadow">
+		<h1 class="m-landing__h1 f-h1 cu-text-shadow">
 			<%- page.title %>
-		</span>
+		</h1>
 		<div class="has-text-white m-landing__stats f-h4 is-inline-block">Year <strong><%- page.year %></strong> ~ <strong><%- page.wordCount %></strong> words</div>
 	</div>
 
@@ -41,13 +41,35 @@
 </section>
 
 <!-- writing section -->
-<section class="section is-sml">
+<section class="section is-sml is-p0--bot" id="fn-writing">
 	<div class="container">
 		<div class="columns">
 			<div class="column is-8 is-offset-2 m-writing override" id="anchor-content">
-					<%- page.content %>
+				<%- page.content %>
 			</div>
 		</div>
 	</div>
 </section>
 
+<!-- writing footer -->
+<section class="section is-p0--top">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2 m-writing override">
+				<hr>
+				Thanks for reading! You can leave a comment below or check out <a href="/">other writings</a>. Otherwise, see you again soon?
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- comments -->
+<section class="section is-sml is-p0--top">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<div id="disqus_thread"></div>
+			</div>
+		</div>
+	</div>
+</section>

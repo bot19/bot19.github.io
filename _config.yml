@@ -13,6 +13,7 @@ timezone: Asia/Seoul
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://bot19.github.io/
+# url: http://localhost:4000/
 root: /
 permalink: writings/:title/
 permalink_defaults:
@@ -73,6 +74,10 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: lionxtheme
+
+# Comments
+comments: true
+disqus_shortname: lionxlife
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

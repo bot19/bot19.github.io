@@ -51,10 +51,12 @@
 42. home: cover select func. only for home page (unnecessary, checked)
 43. post: landing cover (inc reading time est)
 44. post: writing section
+45. review writing cover/section headings + updated writing styling
+46. post: writing footer (btn back home)
+47. setup secure email for lion.
+48. setup disqus account + integrated post comments
+49. post: scroll progress bar
 
-* review writing cover/section headings
-* post: writing footer (btn back home)
-* post: scroll progress bar
 * home: post feed - coming soon post styling
 * home: post feed - integrate
 * page transitions
@@ -68,7 +70,11 @@
 
 ## Phase 3: optimisations, enhancements, v2.0
 ### Phase 3 done's
-* page: timeline page (post archieve) [after ~5 posts]
+* misc: setup lxl FB
+* misc: setup lxl twitter
+* func: deep linking (link to certain sections)
+* enhancement-func: hide comments, open via btn, show comments count
+* page: timeline page (post archieve) [after ~5-7 posts]
 * func: randomised footer quote
 * enhancement-style: index covers with drawings
 * enhancement-func: timer - 100% accurate with reload

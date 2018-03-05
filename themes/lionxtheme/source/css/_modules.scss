@@ -41,6 +41,8 @@ MODULES styling
 	}
 
 	&__h1 {
+		margin-bottom: 0;
+
 		&--home {
 			font-size: 8rem;
 
@@ -133,24 +135,27 @@ MODULES styling
 .m-writing {
 
 	&.override {
-		h2, h3, h4, blockquote {
+		h2, h3, span {
 			@extend %fontDelius;
 			font-weight: bold;
 		}
 	}
 
-	blockquote {
-		line-height: 1.4;
-		margin-bottom: 4rem;
-	}
+	// intro paragraph
+	span { line-height: 1.4; }
+	p:first-child { margin-bottom: 4rem; }
 
-	h2, h3, h4, p, li { margin-bottom: 2rem; }
+	h2, h3, p, li, blockquote p:first-child { margin-bottom: 2rem; }
 
 	a:hover { text-decoration: underline; }
 
 	ul { list-style: circle; }
+	ul, ol { margin-left: 2rem; }
 
-	ul, ol {
-		margin-left: 2rem;
+	blockquote p {
+		color: $navy-pale;
+
+		&::before { content: '“'; }
+		&::after { content: '”'; }
 	}
 }
