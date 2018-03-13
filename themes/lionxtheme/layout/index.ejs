@@ -55,50 +55,49 @@
 	<div class="container">
 		<div class="columns is-multiline">
 
-			<!-- main post -->
-			<div class="column is-12">
-				<a href="#" target="_self" class="m-pfeed__post is-block t-relative no-overflow">
-					<div class="m-pfeed__bg t-absolute" style="background-image: url('/images/cover-summer.jpg');"></div>
-					<div class="t-absolute m-pfeed__info">
-						<h2 class="f-h2 has-text-white cu-text-shadow">This is the heading of the main post, it can be rather long</h2>
-						<span class="has-text-white m-pfeed__stats">Year <strong>321</strong> ~ <strong>722</strong> words</span>
-						<div class="m-pfeed__read no-overflow">
-							<div class="m-pfeed__read-spacer">
-								<strong>Read <i class="fas fa-long-arrow-alt-right m-pfeed__arrow"></i></strong>
+			<% page.posts.each(function(post, i){ %>
+				<% if (i == 0) { %>
+					<!-- main post -->
+					<div class="column is-12">
+						<a href="<%= url_for(post.path) %>" target="_self" class="m-pfeed__post is-block t-relative no-overflow">
+							<div class="m-pfeed__bg t-absolute" style="background-image: url('<%= url_for(post.path) %>cover.jpg');"></div>
+							<div class="t-absolute m-pfeed__info">
+								<h2 class="f-h2 has-text-white cu-text-shadow"><%= post.title %></h2>
+								<span class="has-text-white m-pfeed__stats">Year <strong><%= post.year %></strong> ~ <strong><%= post.wordCount %></strong> words</span>
+								<div class="m-pfeed__read no-overflow">
+									<div class="m-pfeed__read-spacer">
+										<strong>Read <i class="fas fa-long-arrow-alt-right m-pfeed__arrow"></i></strong>
+									</div>
+								</div>
 							</div>
-						</div>
+						</a>
 					</div>
-				</a>
-			</div>
+				<% } else { %>
+					<!-- post -->
+					<div class="column is-6">
+						<a href="<%= url_for(post.path) %>" target="_self" class="m-pfeed__post m-pfeed__post--sec is-block t-relative no-overflow">
+							<div class="m-pfeed__bg t-absolute" style="background-image: url('<%= url_for(post.path) %>cover.jpg');"></div>
+							<div class="t-absolute m-pfeed__info m-pfeed__info--sec">
+								<h2 class="f-h3 has-text-white cu-text-shadow"><%= post.title %></h2>
+								<span class="has-text-white m-pfeed__stats">Year <strong><%= post.year %></strong> ~ <strong><%= post.wordCount %></strong> words</span>
+								<div class="m-pfeed__read no-overflow">
+									<div class="m-pfeed__read-spacer">
+										<strong>Read <i class="fas fa-long-arrow-alt-right m-pfeed__arrow"></i></strong>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				<% } %>
+			<% }) %>
 
 			<!-- post -->
 			<div class="column is-6">
-				<a href="#" target="_self" class="m-pfeed__post m-pfeed__post--sec is-block t-relative no-overflow">
-					<div class="m-pfeed__bg t-absolute" style="background-image: url('/images/cover-autumn.jpg');"></div>
-					<div class="t-absolute m-pfeed__info m-pfeed__info--sec">
-						<h2 class="f-h3 has-text-white cu-text-shadow">This is the heading of the main post, it can be rather long</h2>
-						<span class="has-text-white m-pfeed__stats">Year <strong>321</strong> ~ <strong>722</strong> words</span>
-						<div class="m-pfeed__read no-overflow">
-							<div class="m-pfeed__read-spacer">
-								<strong>Read <i class="fas fa-long-arrow-alt-right m-pfeed__arrow"></i></strong>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<!-- post -->
-			<div class="column is-6">
-				<a href="#" target="_self" class="m-pfeed__post m-pfeed__post--sec is-block t-relative no-overflow">
+				<a target="_self" class="m-pfeed__post m-pfeed__post--sec is-block t-relative no-overflow">
 					<div class="m-pfeed__bg t-absolute" style="background-image: url('/images/cover-spring.jpg');"></div>
 					<div class="t-absolute m-pfeed__info m-pfeed__info--sec">
-						<h2 class="f-h3 has-text-white cu-text-shadow">This is the heading of the main post, it can be rather long</h2>
-						<span class="has-text-white m-pfeed__stats">Year <strong>321</strong> ~ <strong>722</strong> words</span>
-						<div class="m-pfeed__read no-overflow">
-							<div class="m-pfeed__read-spacer">
-								<strong>Read <i class="fas fa-long-arrow-alt-right m-pfeed__arrow"></i></strong>
-							</div>
-						</div>
+						<h2 class="f-h3 has-text-white cu-text-shadow">Watch this space ;)</h2>
+						<span class="has-text-white m-pfeed__stats">More writings to come...</span>
 					</div>
 				</a>
 			</div>

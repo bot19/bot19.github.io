@@ -15,14 +15,14 @@
 	</div>
 
 	<!-- cover bg -->
-	<div class="m-landing__cover" style="background-image: url('<%- config.root %><%- page.path %>cover.jpg');"></div>
+	<div class="m-landing__cover" style="background-image: url('<%= url_for(page.path) %>cover.jpg');"></div>
 	
 	<!-- mid block: heading -->
 	<div class="m-landing__heading t-absolute t-align--mid has-text-centered has-text-white">
 		<h1 class="m-landing__h1 f-h1 cu-text-shadow">
-			<%- page.title %>
+			<%= page.title %>
 		</h1>
-		<div class="has-text-white m-landing__stats f-h4 is-inline-block">Year <strong><%- page.year %></strong> ~ <strong><%- page.wordCount %></strong> words</div>
+		<div class="has-text-white m-landing__stats f-h4 is-inline-block">Year <strong><%= page.year %></strong> ~ <strong><%= page.wordCount %></strong> words</div>
 	</div>
 
 	<!-- bottom block -->
@@ -56,7 +56,7 @@
 	<div class="container">
 		<div class="columns">
 			<div class="column is-8 is-offset-2 m-writing override">
-				<hr>
+				<hr class="default">
 				Thanks for reading! You can leave a comment below or check out <a href="/">other writings</a>. Otherwise, see you again soon?
 			</div>
 		</div>

@@ -145,7 +145,8 @@ MODULES styling
 	span { line-height: 1.4; }
 	p:first-child { margin-bottom: 4rem; }
 
-	h2, h3, p, li, blockquote p:first-child { margin-bottom: 2rem; }
+	p, li, blockquote p:first-child { margin-bottom: 2rem; }
+	h2, h3 { margin: 4rem 0 2rem; }
 
 	a:hover { text-decoration: underline; }
 
@@ -157,5 +158,22 @@ MODULES styling
 
 		&::before { content: '“'; }
 		&::after { content: '”'; }
+	}
+
+	hr:not(.default) {
+		text-align: center;
+		background: transparent;
+		height: 0;
+		margin: 4rem 0;
+		overflow: visible;
+
+		&::before {
+			content: '. . .';
+			display: inline-block;
+			font-size: 3rem;
+			color: $navy-pale;
+			position: relative;
+			top: -3.25rem;
+		}
 	}
 }

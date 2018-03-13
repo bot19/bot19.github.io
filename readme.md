@@ -56,10 +56,9 @@
 47. setup secure email for lion.
 48. setup disqus account + integrated post comments
 49. post: scroll progress bar
-
-* home: post feed - coming soon post styling
-* home: post feed - integrate
-* page transitions
+50. writing section update: more heading space, section divide
+51. home: post feed - coming soon post styling
+52. home: post feed - integrate
 
 * home: responsive
 * post: responsive
@@ -70,12 +69,14 @@
 
 ## Phase 3: optimisations, enhancements, v2.0
 ### Phase 3 done's
+* enhancement-func: page transitions
 * misc: setup lxl FB
 * misc: setup lxl twitter
 * func: deep linking (link to certain sections)
 * enhancement-func: hide comments, open via btn, show comments count
 * page: timeline page (post archieve) [after ~5-7 posts]
 * func: randomised footer quote
+* enhancement-style: sexy animated link hovers xD
 * enhancement-style: index covers with drawings
 * enhancement-func: timer - 100% accurate with reload
 * page: interesting contact page
