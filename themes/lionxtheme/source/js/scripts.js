@@ -123,7 +123,7 @@
 				*/
 				var setTimer = function () {
 					var
-						initDate = [2017, 5, 1], // init date
+						initDate = [2017, 4, 1], // init date
 						timeDiffDays = moment().diff(moment(initDate), 'days'),
 						timeDiffMins = moment().diff(moment(initDate), 'minutes'),
 						hrToBlogDays = ((timeDiffMins / 24 / 60) - timeDiffDays) * 365,

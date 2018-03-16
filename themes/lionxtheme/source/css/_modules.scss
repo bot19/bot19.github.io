@@ -20,7 +20,7 @@ MODULES styling
 
 .m-landing {
 	height: 100vh;
-	min-height: 560px;
+	min-height: 31rem;
 
 	&__loading {
 		z-index: -1;
@@ -37,22 +37,38 @@ MODULES styling
 	&__heading {
 		left: 0;
 		width: 100%;
-		padding: 0 1rem;
+	}
+
+	&__h1-home {
+		margin-bottom: 0;
+		font-size: 3.5rem;
+
+		span {
+			opacity: 0.5;
+			@include animate(default);
+		}
+
+		.char-hidden { opacity: 0; }
+
+		@include breakpoint($mobplus) { font-size: 5rem; }
+		@include breakpoint($tablet) { font-size: 6rem; }
+		@include breakpoint($desktop) {}
+		@include breakpoint($widescreen) { font-size: 8rem; }
+		@include breakpoint($fullhd) { font-size: 9rem; }
 	}
 
 	&__h1 {
-		margin-bottom: 0;
+		margin: 0 auto;
+		padding: 0 1rem;
+		max-width: 520px;
 
-		&--home {
-			font-size: 8rem;
-
-			span {
-				opacity: 0.5;
-				@include animate(default);
-			}
-
-			.char-hidden { opacity: 0; }
+		@include breakpoint($tablet) { max-width: none; }
+		@include breakpoint($desktop) { 
+			padding: 0;
+			max-width: 960px;
 		}
+		@include breakpoint($widescreen) { max-width: 1152px; }
+		@include breakpoint($fullhd) { max-width: 1344px; }
 	}
 
 	&__stats {
@@ -84,9 +100,17 @@ MODULES styling
 // post feed
 .m-pfeed {
 	&__post {
-		height: 420px;
+		height: 18rem;
 
-		&--sec { height: 320px; }
+		@include breakpoint($mobplus) {}
+		@include breakpoint($tablet) {}
+		@include breakpoint($desktop) {
+			height: 22rem;
+
+			&--sec { height: 18rem; }
+		}
+		@include breakpoint($widescreen) {}
+		@include breakpoint($fullhd) {}
 
 		&:hover {
 			.m-pfeed__bg { filter: blur(5px); }
@@ -105,15 +129,27 @@ MODULES styling
 	}
 
 	&__info {
-		width: 70%;
-		left: 2rem;
-		bottom: 2rem;
+		width: auto;
+		left: 1rem;
+		right: 1rem;
+		bottom: 1rem;
 		z-index: 1;
 
-		&--sec {
-			width: auto;
+		h2 { max-width: 480px; }
+
+		@include breakpoint($mobplus) {
+			left: 2rem;
 			right: 2rem;
+			bottom: 2rem;
 		}
+		@include breakpoint($tablet) {
+			h2 { max-width: 75%; }
+
+			&--sec h2 { max-width: none; }
+		}
+		@include breakpoint($desktop) {}
+		@include breakpoint($widescreen) {}
+		@include breakpoint($fullhd) {}
 	}
 
 	&__stats { opacity: 0.5; }
@@ -143,15 +179,15 @@ MODULES styling
 
 	// intro paragraph
 	span { line-height: 1.4; }
-	p:first-child { margin-bottom: 4rem; }
+	p:first-child { margin-bottom: 2.5rem; }
 
-	p, li, blockquote p:first-child { margin-bottom: 2rem; }
-	h2, h3 { margin: 4rem 0 2rem; }
+	p, li, blockquote p:first-child { margin-bottom: 1.5rem; }
+	h2, h3 { margin: 2.5rem 0 1.5rem; }
 
 	a:hover { text-decoration: underline; }
 
 	ul { list-style: circle; }
-	ul, ol { margin-left: 2rem; }
+	ul, ol { margin-left: 1.5rem; }
 
 	blockquote p {
 		color: $navy-pale;
@@ -164,7 +200,7 @@ MODULES styling
 		text-align: center;
 		background: transparent;
 		height: 0;
-		margin: 4rem 0;
+		margin: 2.5rem 0;
 		overflow: visible;
 
 		&::before {
@@ -176,4 +212,18 @@ MODULES styling
 			top: -3.25rem;
 		}
 	}
+
+	@include breakpoint($tablet) {}
+	@include breakpoint($desktop) {}
+	@include breakpoint($widescreen) {
+		p:first-child { margin-bottom: 4rem; }
+	
+		p, li, blockquote p:first-child { margin-bottom: 2rem; }
+		h2, h3 { margin: 4rem 0 2rem; }
+	
+		ul, ol { margin-left: 2rem; }
+	
+		hr:not(.default) { margin: 4rem 0; }
+	}
+	@include breakpoint($fullhd) {}
 }

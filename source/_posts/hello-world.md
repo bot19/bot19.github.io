@@ -1,5 +1,5 @@
 ---
-title: This is the heading of the main post, a little shorter
+title: This is the heading of the main post, about this length
 year: 276
 wordCount: 1032
 date: 2018-03-04 19:56:46
@@ -9,6 +9,8 @@ tags:
 <span>I used to have this problem. It was almost like an addiction. Except I wasn’t actually consuming something — rather, it was like an addiction of wanting to consume things that I couldn’t.</span>
 
 I’m not proud of this problem. In fact, I used to hide it from family and friends. I used to pretend like nothing was wrong, like nothing bothered me. Yet, it ate away at me inside.
+
+Just wanted another good sized paragraph next to the previous one. For me, for a number of years, it was travel. Show me a pretty picture and my knee-jerk reaction was that I needed to sell my last pair of shoes to go there. And not just go there, but go like, now. Go yesterday. What the fuck was I waiting for?
 
 >For me, for a number of years, it was travel. Show me a pretty picture and my knee-jerk reaction was that I needed to sell my last pair of shoes to go there. And not just go there, but go like, now. Go yesterday. What the fuck was I waiting for? I should be there already. Oh shit, I’m too late!
 

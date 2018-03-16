@@ -19,7 +19,7 @@
 
 	<!-- mid block: heading -->
 	<div class="m-landing__heading t-absolute has-text-centered has-text-white t-align--mid">
-		<span class="m-landing__h1--home f-h1 cu-text-shadow" id="fn-hcover-heading">
+		<span class="m-landing__h1-home f-h1 cu-text-shadow" id="fn-hcover-heading">
 			<span class="char-hidden char-hash">#</span><span class="char-hidden char-l">l</span><span class="char-hidden char-o">o</span><span class="char-hidden char-s">s</span><span class="char-hidden char-t">t</span><span class="char-hidden char-w">w</span><span class="char-hidden char-o">o</span><span class="char-hidden char-r">r</span><span class="char-hidden char-d">d</span><span class="char-hidden char-s">s</span>
 		</span>
 	</div>
@@ -55,6 +55,8 @@
 	<div class="container">
 		<div class="columns is-multiline">
 
+			<% var postsCount = 3; %>
+			<% var posts = 0; %>
 			<% page.posts.each(function(post, i){ %>
 				<% if (i == 0) { %>
 					<!-- main post -->
@@ -89,18 +91,25 @@
 						</a>
 					</div>
 				<% } %>
+				<% posts++; %>
 			<% }) %>
 
-			<!-- post -->
-			<div class="column is-6">
-				<a target="_self" class="m-pfeed__post m-pfeed__post--sec is-block t-relative no-overflow">
-					<div class="m-pfeed__bg t-absolute" style="background-image: url('/images/cover-spring.jpg');"></div>
-					<div class="t-absolute m-pfeed__info m-pfeed__info--sec">
-						<h2 class="f-h3 has-text-white cu-text-shadow">Watch this space ;)</h2>
-						<span class="has-text-white m-pfeed__stats">More writings to come...</span>
-					</div>
-				</a>
-			</div>
+			<!--
+			 * less than X "posts"? Spit out placeholder links
+			 * don't need big post as there will always be a 1st post
+			-->
+			<% for(posts; posts < postsCount; posts++) { %>
+				<!-- post -->
+				<div class="column is-6">
+					<a target="_self" class="m-pfeed__post m-pfeed__post--sec is-block t-relative no-overflow t-cursor-def">
+						<div class="m-pfeed__bg t-absolute" style="background-image: url('/images/post-placeholder.jpg');"></div>
+						<div class="t-absolute m-pfeed__info m-pfeed__info--sec">
+							<h2 class="f-h3 has-text-white cu-text-shadow">#null</h2>
+							<span class="has-text-white m-pfeed__stats">...words in transit</span>
+						</div>
+					</a>
+				</div>
+			<% } %>
 
 		</div>
 	</div>

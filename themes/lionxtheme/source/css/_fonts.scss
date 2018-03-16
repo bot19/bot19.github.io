@@ -73,43 +73,43 @@ body {
 	font-size: 2.5rem;
 	line-height: 1.2; // default: single line
 
-	@include breakpoint($tablet) {  }
+	@include breakpoint($tablet) { font-size: 4rem; }
 	@include breakpoint($desktop) {  }
 	@include breakpoint($widescreen) { font-size: 5rem; }
-	@include breakpoint($fullhd) {  }	
+	@include breakpoint($fullhd) { font-size: 5.3rem; }	
 }
 
 .f-h2,
 .m-writing h2 { // sub heading (bold)
 	@extend %fontNunito700;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	line-height: 1.2;
 
-	@include breakpoint($tablet) {  }
+	@include breakpoint($tablet) { font-size: 2.5rem; }
 	@include breakpoint($desktop) {  }
 	@include breakpoint($widescreen) { font-size: 3rem; }
-	@include breakpoint($fullhd) {  }
+	@include breakpoint($fullhd) { font-size: 3.15rem; }
 }
 
 .f-h3,
 .m-writing h3,
 .m-writing span { // description heading
 	@extend %fontNunito700;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 	line-height: 1.2; // default: multi line
 
-	@include breakpoint($tablet) {  }
+	@include breakpoint($tablet) { font-size: 1.8rem; }
 	@include breakpoint($desktop) {  }
 	@include breakpoint($widescreen) { font-size: 2rem; }
-	@include breakpoint($fullhd) {  }
+	@include breakpoint($fullhd) { font-size: 2.1rem; }
 }
 
 .f-h4 { // small heading, or highlight text
 	@extend %fontNunito200;
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	line-height: 1.2;
 
-	@include breakpoint($tablet) {  }
+	@include breakpoint($tablet) { font-size: 1.4rem; }
 	@include breakpoint($desktop) {  }
 	@include breakpoint($widescreen) { font-size: 1.5rem; }
 	@include breakpoint($fullhd) {  }
@@ -117,10 +117,9 @@ body {
 
 .m-writing {
 	@extend %fontDelius;
-	// font-size: 1.2rem;
-	// line-height: 1.4;
+	font-size: 1.1rem;
 
-	@include breakpoint($tablet) {  }
+	@include breakpoint($tablet) { font-size: 1.2rem; }
 	@include breakpoint($desktop) {  }
 	@include breakpoint($widescreen) { font-size: 1.4rem; }
 	@include breakpoint($fullhd) {  }

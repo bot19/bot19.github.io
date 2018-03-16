@@ -56,8 +56,13 @@ GLOBALS styling
 
 		svg {
 			@include animate(default);
-			top: -4px;
+			top: -3px;
 			font-size: 2.1rem;
+
+			@include breakpoint($tablet) { top: -4px; }
+			@include breakpoint($desktop) {}
+			@include breakpoint($widescreen) { top: -4px; }
+			@include breakpoint($fullhd) { top: -5px; }
 		}
 	}
 
@@ -69,12 +74,21 @@ GLOBALS styling
 		opacity: 0.66;
 		@include animate(default);
 		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+		right: 0;
+		transform: translate(0, -50%);
 		@extend %fontNunito700;
 		text-transform: uppercase;
 		font-size: 0.7rem;
 		line-height: 1;
+
+		@include breakpoint($tablet) {
+			right: auto;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		@include breakpoint($desktop) {}
+		@include breakpoint($widescreen) {  }
+		@include breakpoint($fullhd) {  }
 	}
 
 	&__timer-desc { opacity: 0.5; }
@@ -93,8 +107,13 @@ GLOBALS styling
 			
 				span { font-size: 2rem; }
 				svg {
-					top: -3px;
+					top: -2px;
 					font-size: 1.38rem;
+
+					@include breakpoint($tablet) { top: -3px; }
+					@include breakpoint($desktop) {}
+					@include breakpoint($widescreen) { top: -3px; }
+					@include breakpoint($fullhd) {  }
 				}
 			}
 

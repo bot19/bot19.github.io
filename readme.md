@@ -60,11 +60,19 @@
 51. home: post feed - coming soon post styling
 52. home: post feed - integrate
 
-* home: responsive
-* post: responsive
-* favicon
+53. timer: time diff is wrong?
+54. home: post feed - integrate; finish, esp. coming soon 
+55. new cover page for winter
+
+56. home: responsive
+57. post: responsive
+58. implement google tracking
+
+* basic favicon
+* downsize all covers to 2k width
 * test + fixes
-* live
+* live (github)
+* connect domain
 
 
 ## Phase 3: optimisations, enhancements, v2.0
@@ -76,6 +84,7 @@
 * enhancement-func: hide comments, open via btn, show comments count
 * page: timeline page (post archieve) [after ~5-7 posts]
 * func: randomised footer quote
+* enhancement-style: favicon suite
 * enhancement-style: sexy animated link hovers xD
 * enhancement-style: index covers with drawings
 * enhancement-func: timer - 100% accurate with reload
