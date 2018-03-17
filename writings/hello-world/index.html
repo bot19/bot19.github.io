@@ -14,6 +14,16 @@
 		<!-- CSS -->
 		<link rel="stylesheet" href="/css/styles.css">
 
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115890433-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-115890433-1');
+		</script>
+
 		<!-- other -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	</head>
@@ -35,7 +45,9 @@
 	* contains logo + timer
 -->
 
-<div class="g-progress t-fixed" id="fn-progress"></div>
+<div class="g-progress t-fixed" id="fn-progress">
+	<div class="g-progress__bar" id="fn-bar"></div>
+</div>
 
 <header class="header t-fixed" id="fn-header">
 	<div class="section is-p0 t-relative">
@@ -48,8 +60,9 @@
 					<div class="header__container t-relative">
 	
 						<!-- logo -->
-						<a href="#" class="header__logo is-inline-block t-relative" id="fn-logo">
-							<i class="fas fa-hourglass-half t-relative"></i><span>LXL</span>
+						<a href="/" class="header__logo is-block t-relative" id="fn-logo">
+							<img src="/images/logo-white.png" alt="White LXL Logo" class="header__logo--w is-block">
+							<img src="/images/logo-black.png" alt="Black LXL Logo" class="header__logo--b is-block t-absolute">
 						</a>
 	
 						<!-- timer -->
@@ -78,24 +91,149 @@
 
 
 
-
+		
 		<!--
 	Post page template
 	* all writing/posts will use this template
 -->
 
+<!-- landing cover -->
+<section class="m-landing no-overflow t-relative" id="fn-post">
+	
+	<!-- loading spinner -->
+	<div class="m-landing__loading t-absolute t-align--mid-cen has-text-centered">
+		<div class="is-inline-block">
+			<i class="fas fa-circle-notch fa-spin fa-2x "></i>
+		</div>
+		<div>Loading</div>
+	</div>
+
+	<!-- cover bg -->
+	<div class="m-landing__cover" style="background-image: url('/writings/hello-world/cover.jpg');"></div>
+	
+	<!-- mid block: heading -->
+	<div class="m-landing__heading t-absolute t-align--mid has-text-centered has-text-white">
+		<h1 class="m-landing__h1 f-h1 cu-text-shadow">
+			This is the heading of the main post
+		</h1>
+		<div class="has-text-white m-landing__stats f-h4 is-inline-block">Year <strong>276</strong> ~ <strong>1032</strong> words</div>
+	</div>
+
+	<!-- bottom block -->
+	<div class="section is-p0 m-landing__bot t-absolute">
+		<div class="container">
+			<div class="columns">
+				<div class="column has-text-white">
+					<i class="fas fa-caret-down fa-3x"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- cover (scroll-down) btn -->
+	<div class="m-landing__next t-absolute t-pointer" data-target="#anchor-content" id="fn-next"></div>
+</section>
+
+<!-- writing section -->
+<section class="section is-sml is-p0--bot" id="fn-writing">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2 m-writing override" id="anchor-content">
+				<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eget gravida risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. In interdum elit eget feugiat bibendum. Suspendisse in iaculis eros.</span></p>
+<p>Curabitur ornare mattis turpis id lacinia. Nulla non ex a risus gravida lobortis non a diam. Nulla massa arcu, blandit non scelerisque a, aliquam nec tortor. Vestibulum quis maximus lorem. Donec porttitor tempus massa et accumsan. Cras egestas mattis turpis.</p>
+<blockquote>
+<p>Duis turpis purus, volutpat eu tortor rutrum, convallis blandit nibh. Aliquam blandit mauris at erat tristique pulvinar. Pellentesque ornare maximus nibh et lacinia. Duis quis leo posuere, accumsan arcu nec, volutpat leo. Cras finibus lacus a enim tincidunt posuere.</p>
+</blockquote>
+<p>Phasellus lobortis, augue vel mollis imperdiet, quam eros placerat nisi, ornare dictum est erat sed lectus. Ut vel ipsum in metus ultrices luctus. Praesent erat odio, pellentesque et justo sed, aliquam rhoncus quam. Duis convallis lobortis tempor. Integer imperdiet hendrerit faucibus. Ut sodales nunc ut feugiat lacinia.</p>
+<hr>
+<p>Donec purus quam, efficitur vitae risus in, consequat rutrum nisi. Vivamus quis augue semper, finibus mi eget, hendrerit eros. Nunc consequat erat magna, vel maximus justo dignissim a. Ut at arcu fermentum, semper mauris nec, elementum ligula. Phasellus in molestie purus, eu dapibus nisl. Praesent facilisis sem in facilisis porta. In ultrices ipsum suscipit enim ultricies, sed aliquam leo mattis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<p>Duis vitae posuere urna. Suspendisse convallis, nisl at molestie placerat, neque ligula fringilla lectus, vitae condimentum lorem libero a odio. Sed laoreet nulla vel ornare aliquam. Nulla dignissim fermentum sodales. Donec enim velit, laoreet ut lacus vitae, condimentum dignissim nulla. Proin sit amet felis velit. Nunc non faucibus enim.</p>
+<p>Nunc volutpat enim sed felis ultricies, eget porta ipsum feugiat. Suspendisse justo mauris, tincidunt ac commodo ut, tristique at nisl. Vestibulum aliquam ultrices dui nec scelerisque. Aliquam semper cursus justo a varius. Fusce eget facilisis elit.</p>
+<hr>
+<p>Mauris vehicula fermentum efficitur. Praesent et egestas purus, ut egestas nisi. Vestibulum auctor a odio nec posuere. Proin convallis elementum augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in ipsum enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+<p>Aliquam ornare dictum interdum. In eu est quis sapien convallis consectetur sed non erat. Suspendisse volutpat sollicitudin felis, sit amet molestie nulla malesuada sit amet. In dapibus sagittis suscipit. Curabitur fermentum fringilla nibh. Fusce condimentum mauris vestibulum neque aliquam porttitor.</p>
+<p>Dummy post! Real post coming soon. Thanks <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! :D</p>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- writing footer -->
+<section class="section is-p0--top">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2 m-writing override">
+				<hr class="default">
+				Thanks for reading! You can leave a comment below or check out <a href="/">other writings</a>. Otherwise, see you again soon?
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- comments -->
+<section class="section is-sml is-p0--top">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8 is-offset-2">
+				<div id="disqus_thread"></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+		<!--
+	Footer partial
+	* contains "copyright", some random quote, social media, full nav (later)
+-->
+
+<footer class="section is-sml footer no-overflow">
+	<div class="container">
+		<div class="columns">
+			<!-- left: info -->
+			<div class="column is-8 t-relative">
+				<!-- bg graphics -->
+				<i class="fas fa-hourglass-end t-absolute footer__bg"></i>
+
+				<div class="t-relative footer__info">
+					<p class="f-h3 footer__quote override">“It’s not the years in your life that count. It’s the life in your years.”</p>
+					<p><a class="footer__twitter" title="later ;)"><i class="fab fa-twitter"></i></a> <strong>Lion X Life</strong> / Year <span id="fn-footer-year">000</span></p>
+				</div>
+			</div>
+
+			<!-- right: social media (future) -->
+		</div>
+	</div>
+</footer>
+
+
+
+
+
+
+
+
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
-		<script>window.jQuery || document.write('<script src="/js/vendor/moment.min.js"><\/script>')</script>
+		<script>window.moment || document.write('<script src="/js/vendor/moment.min.js"><\/script>')</script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="/js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
 		<script src="/js/scripts.js"></script>
 
-		<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-		<!-- <script>
-			window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-			ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
-		</script>
-		<script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
+		
+	<script>
+		var disqus_shortname = 'lionxlife';
+		
+		var disqus_url = 'https://bot19.github.io/writings/hello-world/';
+		
+		(function(){
+			var dsq = document.createElement('script');
+			dsq.type = 'text/javascript';
+			dsq.async = true;
+			dsq.src = '//go.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
 	</body>
 </html>

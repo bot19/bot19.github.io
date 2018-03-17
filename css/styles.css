@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
 MAIN CSS
 - imports all bulma SASS + custom SCSS
@@ -1597,38 +1598,36 @@ FONTS CSS
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 200;
-  src: local("Nunito ExtraLight"), local("Nunito-ExtraLight"), url(/temp/XRXW3I6Li01BKofA-seUYevIWzgPDA.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  src: local("Nunito ExtraLight"), local("Nunito-ExtraLight"), url(https://fonts.gstatic.com/s/nunito/v9/XRXW3I6Li01BKofA-seUYevIWzgPDA.woff2) format("woff2"); }
 
 @font-face {
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 700;
-  src: local("Nunito Bold"), local("Nunito-Bold"), url(/temp/XRXW3I6Li01BKofAjsOUYevIWzgPDA.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  src: local("Nunito Bold"), local("Nunito-Bold"), url(https://fonts.gstatic.com/s/nunito/v9/XRXW3I6Li01BKofAjsOUYevIWzgPDA.woff2) format("woff2"); }
 
 @font-face {
-  font-family: 'Delius Swash Caps';
+  font-family: 'Delius';
   font-style: normal;
   font-weight: 400;
-  src: local("Delius Swash Caps"), local("DeliusSwashCaps-Regular"), url(/temp/oY1E8fPLr7v4JWCExZpWebxVKORpXUeaIGajv1Yt.woff2) format("woff2");
+  src: local("Delius-Regular"), url(https://fonts.gstatic.com/s/delius/v7/PN_xRfK0pW_9e1rdZsg_rz7b_g.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 
-.f-writing {
-  font-family: "Delius Swash Caps", "Helvetica Neue", Helvetica, Arial, sans-serif;
+.m-writing, .m-writing.override h2, .m-writing.override h3, .m-writing.override span {
+  font-family: "Delius", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400; }
 
 html,
-body, .f-h4,
-.m-writing h4 {
+body, .f-h4 {
   font-family: "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 200; }
 
 .f-h1, .f-h2,
 .m-writing h2, .f-h3,
-.m-writing h3, .header__logo, .header__timer {
+.m-writing h3,
+.m-writing span, .header__timer {
   font-family: "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 700; }
@@ -1665,33 +1664,80 @@ body {
 .f-h1 {
   font-size: 2.5rem;
   line-height: 1.2; }
+  @media screen and (min-width: 769px) {
+    .f-h1 {
+      font-size: 4rem; } }
+  @media screen and (min-width: 1216px) {
+    .f-h1 {
+      font-size: 5rem; } }
+  @media screen and (min-width: 1408px) {
+    .f-h1 {
+      font-size: 5.3rem; } }
 
 .f-h2,
 .m-writing h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 1.2; }
+  @media screen and (min-width: 769px) {
+    .f-h2,
+    .m-writing h2 {
+      font-size: 2.5rem; } }
+  @media screen and (min-width: 1216px) {
+    .f-h2,
+    .m-writing h2 {
+      font-size: 3rem; } }
+  @media screen and (min-width: 1408px) {
+    .f-h2,
+    .m-writing h2 {
+      font-size: 3.15rem; } }
 
 .f-h3,
-.m-writing h3 {
-  font-size: 1.4rem;
+.m-writing h3,
+.m-writing span {
+  font-size: 1.6rem;
   line-height: 1.2; }
+  @media screen and (min-width: 769px) {
+    .f-h3,
+    .m-writing h3,
+    .m-writing span {
+      font-size: 1.8rem; } }
+  @media screen and (min-width: 1216px) {
+    .f-h3,
+    .m-writing h3,
+    .m-writing span {
+      font-size: 2rem; } }
+  @media screen and (min-width: 1408px) {
+    .f-h3,
+    .m-writing h3,
+    .m-writing span {
+      font-size: 2.1rem; } }
 
-.f-h4,
-.m-writing h4 {
-  font-size: 1.4rem;
+.f-h4 {
+  font-size: 1.3rem;
   line-height: 1.2; }
+  @media screen and (min-width: 769px) {
+    .f-h4 {
+      font-size: 1.4rem; } }
+  @media screen and (min-width: 1216px) {
+    .f-h4 {
+      font-size: 1.5rem; } }
 
-.f-btn {
-  font-size: 1rem;
-  line-height: 1.2; }
+.m-writing {
+  font-size: 1.2rem; }
+  @media screen and (min-width: 1216px) {
+    .m-writing {
+      font-size: 1.4rem; } }
 
 /*!
 BASE CSS
 - for any custom site-wide standards
 */
-h1, h2, h3, h4, h5, p {
+html {
+  -webkit-text-size-adjust: 100%; }
+
+h1, h2, h3, h4, h5, p, li {
   margin: 0 0 1rem; }
-  h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, p:last-child {
+  h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, p:last-child, li:last-child {
     margin: 0; }
 
 .b-link {
@@ -1716,6 +1762,11 @@ GLOBALS styling
   opacity: 0;
   background: #2B2D42;
   transition: all 0.2s ease-in-out; }
+  .g-progress__bar {
+    width: 0;
+    height: 3px;
+    background: #EF233C;
+    transition: all 0.2s ease-in-out; }
 
 .header {
   top: 3px;
@@ -1729,20 +1780,15 @@ GLOBALS styling
     width: 100%;
     height: 0;
     transition: all 0.2s ease-in-out; }
-  .header__logo {
-    transition: all 0.2s ease-in-out;
-    color: white;
-    top: 2px; }
-    .header__logo:hover {
-      color: white; }
-    .header__logo span {
-      transition: all 0.2s ease-in-out;
-      font-size: 3rem;
-      line-height: 1; }
-    .header__logo svg {
-      transition: all 0.2s ease-in-out;
-      top: -4px;
-      font-size: 2.1rem; }
+  .header__logo img {
+    width: 7rem; }
+  .header__logo--w {
+    transition: all 0.2s ease-in-out; }
+  .header__logo--b {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.2s ease-in-out; }
   .header__timer {
     padding: 5px 10px;
     border-radius: 3px;
@@ -1751,25 +1797,46 @@ GLOBALS styling
     opacity: 0.66;
     transition: all 0.2s ease-in-out;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 0;
+    transform: translate(0, -50%);
     text-transform: uppercase;
     font-size: 0.7rem;
     line-height: 1; }
+    @media screen and (min-width: 769px) {
+      .header__timer {
+        right: auto;
+        left: 50%;
+        transform: translate(-50%, -50%); } }
   .header__timer-desc {
     opacity: 0.5; }
   .header.header-page .header__bg {
     height: 100%; }
-  .header.header-page .header__logo {
-    color: black; }
-    .header.header-page .header__logo span {
-      font-size: 2rem; }
-    .header.header-page .header__logo svg {
-      top: -3px;
-      font-size: 1.38rem; }
+  .header.header-page .header__logo img {
+    width: 5rem; }
+  .header.header-page .header__logo--w {
+    opacity: 0; }
+  .header.header-page .header__logo--b {
+    opacity: 1; }
   .header.header-page .header__timer {
     background: none;
     color: black; }
+
+.footer {
+  background: #2B2D42;
+  color: #8D99AE; }
+  .footer__bg {
+    top: -6rem;
+    left: -1rem;
+    font-size: 18rem;
+    opacity: 0.1; }
+  .footer__info {
+    z-index: 1; }
+  .footer__twitter {
+    color: #8D99AE;
+    opacity: 0.33;
+    cursor: default; }
+    .footer__twitter:hover {
+      color: #8D99AE; }
 
 /*!
 COMPONENTS styling
@@ -1805,7 +1872,7 @@ MODULES styling
 
 .m-landing {
   height: 100vh;
-  min-height: 560px; }
+  min-height: 31rem; }
   .m-landing__loading {
     z-index: -1;
     opacity: 0.33; }
@@ -1816,33 +1883,203 @@ MODULES styling
     height: 100%;
     animation: zoom 10s linear infinite; }
   .m-landing__heading {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
-  .m-landing__h1 {
-    font-size: 8rem;
-    color: white; }
-    .m-landing__h1 span {
+    left: 0;
+    width: 100%; }
+  .m-landing__h1-home {
+    margin-bottom: 0;
+    font-size: 3.5rem; }
+    .m-landing__h1-home span {
       opacity: 0.5;
       transition: all 0.2s ease-in-out; }
-    .m-landing__h1 .char-hidden {
+    .m-landing__h1-home .char-hidden {
       opacity: 0; }
+    @media screen and (min-width: 480px) {
+      .m-landing__h1-home {
+        font-size: 5rem; } }
+    @media screen and (min-width: 769px) {
+      .m-landing__h1-home {
+        font-size: 6rem; } }
+    @media screen and (min-width: 1216px) {
+      .m-landing__h1-home {
+        font-size: 8rem; } }
+    @media screen and (min-width: 1408px) {
+      .m-landing__h1-home {
+        font-size: 9rem; } }
+  .m-landing__h1 {
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 520px; }
+    @media screen and (min-width: 769px) {
+      .m-landing__h1 {
+        max-width: none; } }
+    @media screen and (min-width: 1024px) {
+      .m-landing__h1 {
+        padding: 0;
+        max-width: 960px; } }
+    @media screen and (min-width: 1216px) {
+      .m-landing__h1 {
+        max-width: 1152px; } }
+    @media screen and (min-width: 1408px) {
+      .m-landing__h1 {
+        max-width: 1344px; } }
+  .m-landing__stats {
+    opacity: 0.5;
+    background: black;
+    padding: 0.25rem 0.5rem 0.125rem;
+    border-radius: 3px;
+    margin-top: 1rem; }
   .m-landing__bot {
     bottom: 0;
     left: 0;
     width: 100%; }
+  .m-landing__next {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
 
 /*! HOME
 -------------------------------------------------------- */
+.m-pfeed__post {
+  height: 18rem; }
+  @media screen and (min-width: 1024px) {
+    .m-pfeed__post {
+      height: 22rem; }
+      .m-pfeed__post--sec {
+        height: 18rem; } }
+  .m-pfeed__post:hover .m-pfeed__bg {
+    filter: blur(5px); }
+  .m-pfeed__post:hover .m-pfeed__read {
+    max-height: 40px; }
+
+.m-pfeed__bg {
+  background: url("") no-repeat center center;
+  background-size: cover;
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transform: scale(1.05); }
+
+.m-pfeed__info {
+  width: auto;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1; }
+  .m-pfeed__info h2 {
+    max-width: 480px; }
+  @media screen and (min-width: 480px) {
+    .m-pfeed__info {
+      left: 2rem;
+      right: 2rem;
+      bottom: 2rem; } }
+  @media screen and (min-width: 769px) {
+    .m-pfeed__info h2 {
+      max-width: 75%; }
+    .m-pfeed__info--sec h2 {
+      max-width: none; } }
+
+.m-pfeed__stats {
+  opacity: 0.5; }
+
+.m-pfeed__read {
+  transition: all 0.2s ease-in-out;
+  max-height: 0; }
+
+.m-pfeed__read-spacer {
+  padding-top: 0.5rem; }
+
+.m-pfeed__arrow {
+  transform: translateY(2px); }
+
+/*! POSTS
+-------------------------------------------------------- */
+.m-writing.override h2, .m-writing.override h3, .m-writing.override span {
+  font-weight: bold; }
+
+.m-writing span {
+  line-height: 1.4; }
+
+.m-writing p:first-child {
+  margin-bottom: 2.5rem; }
+
+.m-writing p, .m-writing li, .m-writing blockquote p:first-child {
+  margin-bottom: 1.5rem; }
+
+.m-writing h2, .m-writing h3 {
+  margin: 2.5rem 0 1.5rem; }
+
+.m-writing a:hover {
+  text-decoration: underline; }
+
+.m-writing ul {
+  list-style: circle; }
+
+.m-writing ul, .m-writing ol {
+  margin-left: 1.5rem; }
+
+.m-writing blockquote p {
+  color: #8D99AE; }
+  .m-writing blockquote p::before {
+    content: '“'; }
+  .m-writing blockquote p::after {
+    content: '”'; }
+
+.m-writing hr:not(.default) {
+  text-align: center;
+  background: transparent;
+  height: 0;
+  margin: 2.5rem 0;
+  overflow: visible; }
+  .m-writing hr:not(.default)::before {
+    content: '. . .';
+    display: inline-block;
+    font-size: 3rem;
+    color: #8D99AE;
+    position: relative;
+    top: -3.25rem; }
+
+@media screen and (min-width: 1216px) {
+  .m-writing p:first-child {
+    margin-bottom: 4rem; }
+  .m-writing p, .m-writing li, .m-writing blockquote p:first-child {
+    margin-bottom: 2rem; }
+  .m-writing h2, .m-writing h3 {
+    margin: 4rem 0 2rem; }
+  .m-writing ul, .m-writing ol {
+    margin-left: 2rem; }
+  .m-writing hr:not(.default) {
+    margin: 4rem 0; } }
+
 /*!
 Custom styling
 - styling that doesn't fit elsewhere (cu-*) or unique naming
 */
+.is-red-candy {
+  color: #D90429; }
+
+.is-red-pale {
+  color: #EF233C; }
+
+.is-white-pale {
+  color: #EDF2F4; }
+
+.is-navy-pale {
+  color: #8D99AE; }
+
+.is-navy-dark {
+  color: #2B2D42; }
+
 .an-opacity-1 {
   opacity: 1; }
 
 .an-opacity-0 {
   opacity: 0; }
+
+.cu-text-shadow {
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); }
 
 /*!
 TRUMPS CSS
@@ -1854,17 +2091,19 @@ TRUMPS CSS
 -3 widescreen >
 -4 fullhd >
 */
-.t-align--middle {
+.t-align--mid {
   top: 50%;
-  position: relative;
   transform: translate(0, -50%); }
   @media screen and (min-width: 769px) {
-    .t-align--middle-1 {
+    .t-align--mid-1 {
       top: 50%;
-      position: relative;
       transform: translate(0, -50%); } }
 
-.t-align--center {
+.t-align--cen {
+  left: 50%;
+  transform: translate(-50%, 0); }
+
+.t-align--cen-m {
   margin-left: auto;
   margin-right: auto; }
 
@@ -1904,6 +2143,9 @@ TRUMPS CSS
 
 .t-pointer {
   cursor: pointer; }
+
+.t-cursor-def {
+  cursor: default; }
 
 .t-bg-white {
   background-color: white; }

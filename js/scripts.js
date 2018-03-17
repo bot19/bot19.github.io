@@ -20,7 +20,7 @@
 		variables = {
 			initViewportWidth: window.innerWidth,
 			windowTopPosition: $window.scrollTop(),
-			scrollHeaderOffsent: 100,
+			scrollHeaderOffsent: 60,
 			headerTransHeight: 200,
 			homeHeadingAnimationDelay: 1000,
 			firstTimeHeading: true
@@ -33,8 +33,8 @@
 					$timerDay = $('#day'),
 					$timerYear = $('#year'),
 					$header = $('#fn-header'),
-					$cover = $('#fn-cover'),
-					$progressBar = $('#fn-progress');
+					$progressBar = $('#fn-progress'),
+					$postCover = $('#fn-post');
 
 				/*
 					UTILITY FUNCTIONS
@@ -123,7 +123,7 @@
 				*/
 				var setTimer = function () {
 					var
-						initDate = [2017, 5, 1], // init date
+						initDate = [2017, 4, 1], // init date
 						timeDiffDays = moment().diff(moment(initDate), 'days'),
 						timeDiffMins = moment().diff(moment(initDate), 'minutes'),
 						hrToBlogDays = ((timeDiffMins / 24 / 60) - timeDiffDays) * 365,
@@ -132,6 +132,7 @@
 					
 					// set blog day (hr) and blog year (day)
 					$timerYear.html(timeDiffDays);
+					$('#fn-footer-year').html(timeDiffDays); // for footer too! :D
 					$timerDay.html(blogDays); // round down, decimal used for hours
 
 					// figured out blog day, set cover season bg! (if home)
@@ -223,7 +224,7 @@
 
 				// header scroll transition
 				var transitionHeader = function (window_top_position) {
-					console.log('transitionHeader init');
+					//console.log('transitionHeader init');
 
 					var
 						headerAnimationClass = 'header-page',
@@ -282,27 +283,26 @@
 					// object of words + duration to animate through
 					var
 						words = [
-							{word: '#soulwords', duration: 1000, opacity: 0.5},
-							{word: '#heartwords', duration: 800, opacity: 0.5},
-							{word: '#lifewords', duration: 700, opacity: 0.5},
-							{word: '#mylife', duration: 600, opacity: 0.6},
-							{word: '#yourlife', duration: 500, opacity: 0.6},
-							{word: '#ourlife', duration: 400, opacity: 0.6},
-							{word: '#anadventure', duration: 300, opacity: 0.7},
-							{word: '#together', duration: 200, opacity: 0.8},
-							{word: '#sidebyside', duration: 200, opacity: 0.8},
-							{word: '#asone', duration: 200, opacity: 0.8},
-							{word: '#doinglife', duration: 200, opacity: 0.8},
-							{word: '#sharing', duration: 200, opacity: 0.9},
-							{word: '#experiencing', duration: 200, opacity: 0.9},
-							{word: '#learning', duration: 200, opacity: 0.9},
-							{word: '#crying', duration: 200, opacity: 0.9},
-							{word: '#resting', duration: 200, opacity: 0.9},
-							{word: '#laughing', duration: 200, opacity: 0.9},
-							{word: '#enjoying', duration: 200, opacity: 0.9},
-							{word: '#changing', duration: 200, opacity: 0.9},
-							{word: '#living', duration: 200, opacity: 0.9},
-							{word: '#forever', duration: 200, opacity: 1}
+							{word: '#soulwords', delayBefore: 1000, opacity: 0.5},
+							{word: '#heartwords', delayBefore: 900, opacity: 0.5},
+							{word: '#lifewords', delayBefore: 800, opacity: 0.5},
+							{word: '#thislife', delayBefore: 700, opacity: 0.6},
+							{word: '#ourlives', delayBefore: 600, opacity: 0.6},
+							{word: '#anadventure', delayBefore: 500, opacity: 0.7},
+							{word: '#together', delayBefore: 400, opacity: 0.8},
+							{word: '#sidebyside', delayBefore: 300, opacity: 0.8},
+							{word: '#asone', delayBefore: 300, opacity: 0.8},
+							{word: '#doinglife', delayBefore: 300, opacity: 0.8},
+							{word: '#sharing', delayBefore: 200, opacity: 0.9},
+							{word: '#experiencing', delayBefore: 200, opacity: 0.9},
+							{word: '#learning', delayBefore: 200, opacity: 0.9},
+							{word: '#crying', delayBefore: 200, opacity: 0.9},
+							{word: '#resting', delayBefore: 200, opacity: 0.9},
+							{word: '#laughing', delayBefore: 200, opacity: 0.9},
+							{word: '#enjoying', delayBefore: 200, opacity: 0.9},
+							{word: '#changing', delayBefore: 200, opacity: 0.9},
+							{word: '#living', delayBefore: 200, opacity: 0.9},
+							{word: '#forever', delayBefore: 200, opacity: 1}
 						],
 						i = 0,
 						animate = function (index, words) {
@@ -321,7 +321,7 @@
 								
 								// animate next word
 								animate(i, words);
-							}, words[index].duration);
+							}, words[index].delayBefore);
 						};
 
 					// loop
@@ -354,7 +354,7 @@
 					// function to set
 					var setCover = function (cover, position) {
 						console.log('homeCoverSeasons init', day);
-						$cover.css({
+						$('#fn-cover').css({
 							'background-image': 'url(' + cover + ')',
 							'background-position': position
 						});
@@ -389,6 +389,35 @@
 					}
 				};
 
+				/** 
+				 * reading progress bar @posts
+				 * progress tracks bottom, not top of window
+				 * progress tracks writing section, not comments or footer
+				*/
+				var readingProgressBar = function (window_top_position) {
+					// only on post pages
+					if (!$postCover.length) return;
+					
+					// calculate everything
+					var 
+						winBottom = $window.height(),
+						contentHeight = $postCover.outerHeight() + $('#fn-writing').outerHeight(),
+						position = window_top_position + winBottom,
+						progress = null;
+					
+					// current progress
+					if (position > contentHeight) {
+						// past writing section
+						progress = 100;
+					} else {
+						progress = Math.round(position / contentHeight * 100);
+					}
+					
+					// set
+					$('#fn-bar').css('width', progress + '%');
+					//console.log('readingProgressBar init', progress);
+				};
+
 
 
 				/*
@@ -399,21 +428,21 @@
 				setTimer();
 				transitionHeader(variables.windowTopPosition);
 
-
 				// PARTICULAR PAGE
-				$cover.doOnce(contentScroll);
-				$('#fn-down-bar').doOnce(contentScroll);
-
+				$('#fn-next').doOnce(contentScroll);
+				readingProgressBar(variables.windowTopPosition);
 
 				/*
 					ON WINDOW RESIZE execute
 					* only fires X ms post resized
 				*/
 				var initPostResize = debounce(function() {
+					variables.windowTopPosition = $window.scrollTop();
+
 					// GLOBAL
 
 					// PARTICULAR PAGE
-
+					readingProgressBar(variables.windowTopPosition);
 
 					// IE11
 					//if ($ie1011.length) {}
@@ -433,9 +462,8 @@
 					// GLOBAL
 					transitionHeader(variables.windowTopPosition);
 
-
 					// PARTICULAR PAGE
-
+					readingProgressBar(variables.windowTopPosition);
 
 				});
 			},

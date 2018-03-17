@@ -14,6 +14,16 @@
 		<!-- CSS -->
 		<link rel="stylesheet" href="/css/styles.css">
 
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115890433-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-115890433-1');
+		</script>
+
 		<!-- other -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	</head>
@@ -35,7 +45,9 @@
 	* contains logo + timer
 -->
 
-<div class="g-progress t-fixed" id="fn-progress"></div>
+<div class="g-progress t-fixed" id="fn-progress">
+	<div class="g-progress__bar" id="fn-bar"></div>
+</div>
 
 <header class="header t-fixed" id="fn-header">
 	<div class="section is-p0 t-relative">
@@ -48,8 +60,9 @@
 					<div class="header__container t-relative">
 	
 						<!-- logo -->
-						<a href="#" class="header__logo is-inline-block t-relative" id="fn-logo">
-							<i class="fas fa-hourglass-half t-relative"></i><span>LXL</span>
+						<a href="/" class="header__logo is-block t-relative" id="fn-logo">
+							<img src="/images/logo-white.png" alt="White LXL Logo" class="header__logo--w is-block">
+							<img src="/images/logo-black.png" alt="Black LXL Logo" class="header__logo--b is-block t-absolute">
 						</a>
 	
 						<!-- timer -->
@@ -78,7 +91,7 @@
 
 
 
-
+		
 		<!--
 	Home page template
 	* ...
@@ -86,7 +99,6 @@
 
 <!-- landing cover -->
 <section class="m-landing no-overflow t-relative">
-	<div class="m-landing__cover" data-target="#anchor-content" id="fn-cover"></div>
 
 	<!-- loading spinner -->
 	<div class="m-landing__loading t-absolute t-align--mid-cen has-text-centered">
@@ -96,15 +108,18 @@
 		<div>Loading</div>
 	</div>
 
-	<!-- mid block: quote? -->
-	<div class="m-landing__heading t-absolute">
-		<span class="m-landing__h1 f-h1" id="fn-hcover-heading">
+	<!-- cover bg -->
+	<div class="m-landing__cover" id="fn-cover"></div>
+
+	<!-- mid block: heading -->
+	<div class="m-landing__heading t-absolute has-text-centered has-text-white t-align--mid">
+		<span class="m-landing__h1-home f-h1 cu-text-shadow" id="fn-hcover-heading">
 			<span class="char-hidden char-hash">#</span><span class="char-hidden char-l">l</span><span class="char-hidden char-o">o</span><span class="char-hidden char-s">s</span><span class="char-hidden char-t">t</span><span class="char-hidden char-w">w</span><span class="char-hidden char-o">o</span><span class="char-hidden char-r">r</span><span class="char-hidden char-d">d</span><span class="char-hidden char-s">s</span>
 		</span>
 	</div>
 
 	<!-- bottom block -->
-	<div class="section is-p0 m-landing__bot t-absolute t-pointer" data-target="#anchor-content" id="fn-down-bar">
+	<div class="section is-p0 m-landing__bot t-absolute">
 		<div class="container">
 			<div class="columns">
 				<div class="column has-text-white">
@@ -113,39 +128,132 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- cover (scroll-down) btn -->
+	<div class="m-landing__next t-absolute t-pointer" data-target="#anchor-content" id="fn-next"></div>
+</section>
+
+<!-- post feed heading -->
+<section class="section is-sml">
+	<div class="container">
+		<div class="columns">
+			<div class="column has-text-centered" id="anchor-content">
+				<h1 class="f-h1">“<span class="is-red-pale">strange</span>words”</h1>
+			</div>
+		</div>
+	</div>
 </section>
 
 <!-- post feed -->
-<section class="m-pfeed section" style="height: 1500px;">
+<section class="section is-p0--top is-sml">
 	<div class="container">
 		<div class="columns is-multiline">
 
-			<!-- heading -->
-			<div class="column has-text-centered" id="anchor-content">
-				<h1 class="f-h1">#words</h1>
-				<!-- with faded icon behind heading -->
-			</div>
+			
+			
+			
+				
+					<!-- main post -->
+					<div class="column is-12">
+						<a href="/writings/hello-world/" target="_self" class="m-pfeed__post is-block t-relative no-overflow">
+							<div class="m-pfeed__bg t-absolute" style="background-image: url('/writings/hello-world/cover.jpg');"></div>
+							<div class="t-absolute m-pfeed__info">
+								<h2 class="f-h2 has-text-white cu-text-shadow">This is the heading of the main post</h2>
+								<span class="has-text-white m-pfeed__stats">Year <strong>276</strong> ~ <strong>1032</strong> words</span>
+								<div class="m-pfeed__read no-overflow">
+									<div class="m-pfeed__read-spacer">
+										<strong>Read <i class="fas fa-long-arrow-alt-right m-pfeed__arrow"></i></strong>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				
+				
+			
 
-			<!-- posts -->
-
-
+			<!--
+			 * less than X "posts"? Spit out placeholder links
+			 * don't need big post as there will always be a 1st post
+			-->
+			
+				<!-- post -->
+				<div class="column is-6">
+					<a target="_self" class="m-pfeed__post m-pfeed__post--sec is-block t-relative no-overflow t-cursor-def">
+						<div class="m-pfeed__bg t-absolute" style="background-image: url('/images/post-placeholder.jpg');"></div>
+						<div class="t-absolute m-pfeed__info m-pfeed__info--sec">
+							<h2 class="f-h3 has-text-white cu-text-shadow">#null</h2>
+							<span class="has-text-white m-pfeed__stats">...words in transit</span>
+						</div>
+					</a>
+				</div>
+			
+				<!-- post -->
+				<div class="column is-6">
+					<a target="_self" class="m-pfeed__post m-pfeed__post--sec is-block t-relative no-overflow t-cursor-def">
+						<div class="m-pfeed__bg t-absolute" style="background-image: url('/images/post-placeholder.jpg');"></div>
+						<div class="t-absolute m-pfeed__info m-pfeed__info--sec">
+							<h2 class="f-h3 has-text-white cu-text-shadow">#null</h2>
+							<span class="has-text-white m-pfeed__stats">...words in transit</span>
+						</div>
+					</a>
+				</div>
+			
 
 		</div>
 	</div>
 </section>
 
+		<!--
+	Footer partial
+	* contains "copyright", some random quote, social media, full nav (later)
+-->
+
+<footer class="section is-sml footer no-overflow">
+	<div class="container">
+		<div class="columns">
+			<!-- left: info -->
+			<div class="column is-8 t-relative">
+				<!-- bg graphics -->
+				<i class="fas fa-hourglass-end t-absolute footer__bg"></i>
+
+				<div class="t-relative footer__info">
+					<p class="f-h3 footer__quote override">“It’s not the years in your life that count. It’s the life in your years.”</p>
+					<p><a class="footer__twitter" title="later ;)"><i class="fab fa-twitter"></i></a> <strong>Lion X Life</strong> / Year <span id="fn-footer-year">000</span></p>
+				</div>
+			</div>
+
+			<!-- right: social media (future) -->
+		</div>
+	</div>
+</footer>
+
+
+
+
+
+
+
+
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
-		<script>window.jQuery || document.write('<script src="/js/vendor/moment.min.js"><\/script>')</script>
+		<script>window.moment || document.write('<script src="/js/vendor/moment.min.js"><\/script>')</script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="/js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
 		<script src="/js/scripts.js"></script>
 
-		<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-		<!-- <script>
-			window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-			ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
-		</script>
-		<script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
+		
+	<script>
+		var disqus_shortname = 'lionxlife';
+		
+		(function(){
+			var dsq = document.createElement('script');
+			dsq.type = 'text/javascript';
+			dsq.async = true;
+			dsq.src = '//go.disqus.com/count.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
 	</body>
 </html>
