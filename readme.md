@@ -59,24 +59,25 @@
 50. writing section update: more heading space, section divide
 51. home: post feed - coming soon post styling
 52. home: post feed - integrate
-
 53. timer: time diff is wrong?
 54. home: post feed - integrate; finish, esp. coming soon 
 55. new cover page for winter
-
 56. home: responsive
 57. post: responsive
 58. implement google tracking
+59. basic favicon
+60. downsize all covers to 2k width
+61. logo is img now for rendering consistency
+62. test + fixes
+63. hexo commands list
+64. live (github)
 
-* basic favicon
-* downsize all covers to 2k width
-* test + fixes
-* live (github)
-* connect domain
+* connect domain (after first post?)
 
 
 ## Phase 3: optimisations, enhancements, v2.0
 ### Phase 3 done's
+* enhancement-func: devTools markup only show when JS active
 * enhancement-func: page transitions
 * misc: setup lxl FB
 * misc: setup lxl twitter

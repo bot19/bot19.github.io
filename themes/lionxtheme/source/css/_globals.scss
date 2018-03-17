@@ -41,28 +41,15 @@ GLOBALS styling
 	}
 
 	&__logo {
-		@extend %fontNunito700;
-		@include animate(default);
-		color: white;
-		top: 2px;
+		img { width: 7rem; }
 
-		&:hover { color: white; }
+		&--w { @include animate(default); }
 
-		span {
+		&--b {
+			top: 0;
+			left: 0;
+			opacity: 0;
 			@include animate(default);
-			font-size: 3rem;
-			line-height: 1;
-		}
-
-		svg {
-			@include animate(default);
-			top: -3px;
-			font-size: 2.1rem;
-
-			@include breakpoint($tablet) { top: -4px; }
-			@include breakpoint($desktop) {}
-			@include breakpoint($widescreen) { top: -4px; }
-			@include breakpoint($fullhd) { top: -5px; }
 		}
 	}
 
@@ -103,18 +90,10 @@ GLOBALS styling
 			}
 
 			&__logo {
-				color: black;
-			
-				span { font-size: 2rem; }
-				svg {
-					top: -2px;
-					font-size: 1.38rem;
+				img { width: 5rem; }
 
-					@include breakpoint($tablet) { top: -3px; }
-					@include breakpoint($desktop) {}
-					@include breakpoint($widescreen) { top: -3px; }
-					@include breakpoint($fullhd) {  }
-				}
+				&--w { opacity: 0; }
+				&--b { opacity: 1; }
 			}
 
 			&__timer {
