@@ -535,7 +535,7 @@
 		}
 
 		// helpful development / debug js
-		website.development();
+		//website.development();
 	});
 
 })(jQuery, undefined);
