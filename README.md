@@ -2,9 +2,7 @@
 
 I made this blog while travelling to write about all the amazing experiences and ideas I had. Unfortunately I was having so much fun IRL and too obsessed with writing perfection that it sadly sat empty; like a newly built extravagant theater that never even saw a single soul...
 
-Well, not to end on a sad note, the version 2 of this website does exist somewhere out there and even has a single post on it (to date), with more to come! Better late than never..?
-
-See if you can find it ;)
+Well, not to end on a sad note, the version 2 of this website does exist out there and even has some writing on it, with more to come! Better late than never..?
 
 ![Build preview](static/preview.png)
 
